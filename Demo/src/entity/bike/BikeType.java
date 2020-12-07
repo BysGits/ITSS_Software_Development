@@ -1,23 +1,28 @@
 package entity.bike;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+
+import entity.db.ECODB;
 
 public class BikeType {
 	
-	private int id;
-	private String name;
-	private int pedals;
-	private int saddles;
-	private int rearSeats;
-	private int rentingFee;
-	private int depositFee;
-	private boolean motor;
+	protected Statement stm;
+	protected int id;
+	protected String name;
+	protected int pedals;
+	protected int saddles;
+	protected int rearSeats;
+	protected int rentingFee;
+	protected int depositFee;
+	// boolean motor;
 	
 	public BikeType() throws SQLException {
-		
+		stm = ECODB.getConnection().createStatement();
 	}
 	
-	public BikeType(int id, String name, int pedals, int saddles, int rearSeats, int rentingFee, int depositFee, boolean motor) throws SQLException {
+	public BikeType(int id, String name, int pedals, int saddles, int rearSeats, int rentingFee, int depositFee) throws SQLException {
 		this.id = id;
 		this.name = name;
 		this.pedals = pedals;
@@ -25,8 +30,17 @@ public class BikeType {
 		this.rearSeats = rearSeats;
 		this.rentingFee = rentingFee;
 		this.depositFee = depositFee;
-		this.motor = motor;
+		//this.motor = motor;
 	}
+	
+//	public BikeType getBikeTypeById(int id) throws SQLException {
+//		String sql = "SELECT * FROM ";
+//		Statement stm = ECODB.getConnection().createStatement();
+//		ResultSet res = stm.executeQuery(sql);
+//		if (res.next()) {
+//			
+//		}
+//	}
 
 	// getter and setter
 	public int getId() {
@@ -85,13 +99,15 @@ public class BikeType {
 		this.depositFee = depositFee;
 	}
 
-	public boolean isMotor() {
-		return motor;
-	}
-
-	public void setMotor(boolean motor) {
-		this.motor = motor;
-	}
+//	public boolean isMotor() {
+//		return motor;
+//	}
+//
+//	public void setMotor(boolean motor) {
+//		this.motor = motor;
+//	}
+	
+	
 	
 	
 	
