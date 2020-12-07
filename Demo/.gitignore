@@ -1,4 +1,4 @@
 .classpath
 .project
-.settings
-.externalToolBuilders
+/.settings/
+/.externalToolBuilders/
