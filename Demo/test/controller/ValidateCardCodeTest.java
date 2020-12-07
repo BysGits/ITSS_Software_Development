@@ -9,22 +9,22 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 class ValidateCardCodeTest {
 
-	private ReturnBikeController returnBikeController;
+	private RentBikeController rentBikeController;
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		returnBikeController = new ReturnBikeController();
+		rentBikeController = new RentBikeController();
 	}
 
 	@ParameterizedTest
 	@CsvSource({
-		"1233, false"
+		"abc, false"
 	})
 	
-
+	
 	void test(String cardCode, boolean expected) {
-		boolean isValid = returnBikeController.validateCardCode(cardCode);
-		assertEquals(expected, isValid);
+		boolean isValid = rentBikeController.validateCardCode(cardCode);
+		assertEquals(isValid, expected);
 	}
 
 }

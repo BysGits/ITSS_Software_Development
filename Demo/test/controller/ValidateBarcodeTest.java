@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-class ValidateCvvCodeTest {
+class ValidateBarcodeTest {
 	
 	private RentBikeController rentBikeController;
 
@@ -20,8 +20,9 @@ class ValidateCvvCodeTest {
 	@CsvSource({
 		
 	})
-	void test(String cvvCode, boolean expected) {
-		boolean isValid = rentBikeController.validateCvvCode(cvvCode);
+	
+	void test(String barcode, boolean expected) {
+		boolean isValid = rentBikeController.validateBarcode(barcode);
 		assertEquals(isValid, expected);
 	}
 
