@@ -18,7 +18,8 @@ class ValidateBarcodeTest {
 
 	@ParameterizedTest
 	@CsvSource({
-		
+		"888bci,true",
+		"2839834,false"
 	})
 	
 	void test(String barcode, boolean expected) {
