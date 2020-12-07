@@ -57,22 +57,11 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 				e1.printStackTrace();
 			}
 		});
-		
-//		rentBikeBtn.setOnMouseClicked(e -> {
-//			RentBikeScreenHandler rentBikeScreen;
-//			try {
-//			    Stage newStage = new Stage();
-//				rentBikeScreen = new RentBikeScreenHandler(this.stage, Configs.VIEW_BIKE_PATH);
-//				rentBikeScreen.setHomeScreenHandler(this);
-//				rentBikeScreen.setBController(new RentBikeController());
-//				returnBikeBtn.setDisable(false);
-//				viewBikeBtn.setDisable(false);
-//			} catch (IOException e1) {
-//				e1.printStackTrace();
-//			}
-//			System.out.print("RENT BIKE");
-//		});
+	}
 	
+	public void setImage() {
+		// fix image path caused by fxml
+		
 	}
 	
 }

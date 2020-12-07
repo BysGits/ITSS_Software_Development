@@ -3,6 +3,8 @@ package entity.dock;
 import java.util.ArrayList;
 import java.util.List;
 
+import entity.bike.Bike;
+
 public class DockList {
 	
 	private List<Dock> listDock;
@@ -41,7 +43,10 @@ public class DockList {
 		}
 		return total;
 	}
-	
-	
+
+	public Bike getBike() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
