@@ -10,6 +10,8 @@ import java.util.logging.Logger;
 import entity.db.ECOBIKEDB;
 import utils.Utils;
 
+import entity.bike.Bike;
+
 public class Dock {
 	
 	private static Logger LOGGER = Utils.getLogger(Dock.class.getName());
@@ -20,6 +22,7 @@ public class Dock {
 	private String address;
 	private int availableBikes;
 	private int emptySlots;
+	
 	
 	public Dock() throws SQLException {
 		stm = ECOBIKEDB.getConnection().createStatement();
@@ -114,5 +117,10 @@ public class Dock {
 		
 	}
 	
+
+	public Bike getBike() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }
