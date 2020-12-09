@@ -2,6 +2,8 @@ package entity.dock;
 
 import java.sql.SQLException;
 
+import entity.bike.Bike;
+
 public class Dock {
 	
 	private int id;
@@ -11,15 +13,15 @@ public class Dock {
 	private int availableBikes;
 	private int emptySlots;
 	
+	
 	public Dock() throws SQLException {
 		
 	}
 	
-	public Dock(int id, String name, String address, String area, int availableBikes, int emptySlots) throws SQLException {
+	public Dock(int id, String name, String address, int availableBikes, int emptySlots) throws SQLException {
 		this.id = id;
 		this.name = name;
 		this.address = address;
-		this.area = area;
 		this.availableBikes = availableBikes;
 		this.emptySlots = emptySlots;
 	}
@@ -73,5 +75,10 @@ public class Dock {
 		this.emptySlots = emptySlots;
 	}
 	
+
+	public Bike getBike() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

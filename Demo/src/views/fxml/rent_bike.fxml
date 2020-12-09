@@ -16,14 +16,14 @@
    <children>
       <AnchorPane prefHeight="150.0" prefWidth="1366.0">
          <children>
-            <ImageView fx:id="ecoImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="ecoImage" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../assets/logo_ecobike-removebg-preview.png" />
                </image>
             </ImageView>
-            <Text fill="#34b908" layoutX="150.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RENT BIKE">
+            <Text fill="#a1cf51" layoutX="170.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RENT BIKE">
                <font>
-                  <Font size="36.0" />
+                  <Font name="Calibri" size="48.0" />
                </font>
             </Text>
          </children>
