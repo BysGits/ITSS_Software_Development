@@ -1,25 +1,48 @@
 package entity.bike;
 
 import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Logger;
+
+import entity.db.ECODB;
+import entity.dock.Dock;
+import javafx.scene.media.Media;
 
 public class Bike {
-
+	
+//	private static Logger LOGGER = Utils.getLogger(Bike.class.getName());
+	
+//	private Statement stm;
 	private int id;
 	private String barcode;
 	private int batteryLife;
+	private Dock dock;
 	private boolean state;
 	private BikeType type;
 	
 	public Bike() throws SQLException {
-		
+//		stm = ECODB.getConnection().createStatement();
 	}
 	
-	public Bike(int id, String barcode, BikeType type, int batteryLife, boolean state) throws SQLException {
+	public Bike(int id) throws SQLException{
+		this.id = id;
+		
+//		stm = ECODB.getConnection().createStatement();
+	}
+	
+	public Bike(int id, String barcode, int batteryLife, Dock dock, boolean state,  BikeType type) throws SQLException {
 		this.id = id;
 		this.barcode = barcode;
 		this.type = type;
 		this.batteryLife = batteryLife;
+		this.dock = dock;
 		this.state = state;
+		this.type = type;
+		
+//		stm = ECODB.getConnection().createStatement();
 	}
 
 	// getter and setter 
@@ -27,39 +50,129 @@ public class Bike {
 		return id;
 	}
 
-	public void setId(int id) {
+	public Bike setId(int id) {
 		this.id = id;
+		return this;
 	}
 
 	public String getBarcode() {
 		return barcode;
 	}
 
-	public void setBarcode(String barcode) {
+	public Bike setBarcode(String barcode) {
 		this.barcode = barcode;
+		return this;
 	}
 
 	public int getBatteryLife() {
 		return batteryLife;
 	}
 
-	public void setBatteryLife(int batteryLife) {
+	public Bike setBatteryLife(int batteryLife) {
 		this.batteryLife = batteryLife;
+		return this;
 	}
 
+	public Dock getDock() {
+		return dock;
+	}
+
+	public Bike setDock(Dock dock) {
+		this.dock = dock;
+		return this;
+	}
+	
 	public boolean isState() {
 		return state;
 	}
 
-	public void setState(boolean state) {
+	public Bike setState(boolean state) {
 		this.state = state;
+		return this;
 	}
 
 	public BikeType getType() {
 		return type;
 	}
 
-	public void setType(BikeType type) {
+	public Bike setType(BikeType type) {
 		this.type = type;
-	}	
+		return this;
+	}
+	
+	public Bike fetchBikeFromDB (ResultSet res) {
+		int tmpId = res.getInt("id");
+		String tmpBarcode = res.getString("barcode");
+		int tmpBatteryLife = res.getInt("batterylife");
+		Dock tmpDock = new Dock().getDockById(res.getInt("dockid"));
+		boolean tmpState = res.getBoolean("state");
+		BikeType tmpBikeType = new BikeType().getBikeTypeById(res.getInt("typeid"));
+		
+		return new Bike(tmpId, tmpBarcode, tmpBatteryLife, tmpDock, tmpState, tmpBikeType);
+	}
+	
+	public Bike getBikeById(int id) throws SQLException{
+		Statement stm = ECODB.getConnection().createStatement();
+		String query = "SELECT * FROM ECOBIKE.BIKE WHERE ID =" + id + ";";
+		ResultSet res = stm.executeQuery(query);
+		
+		if(res.next()) {
+			return fetchBikeFromDB(res);
+		}else {
+			return null;
+		}
+	}
+	
+	public List<Bike> getAllBikes() throws SQLException{
+		ArrayList<Bike> bikeList = new ArrayList<Bike>();
+		
+		Statement stm = ECODB.getConnection().createStatement();
+		String query = "SELECT * FROM ECOBIKE.BIKE;";
+		ResultSet res = stm.executeQuery(query);
+		
+		while(res.next()) {
+			Bike bike = new Bike()
+					.setId(res.getInt("id"))
+					.setBarcode(res.getString("barcode"))
+					.setBatteryLife(res.getInt("batterylife"))
+					.setDock(new Dock().getDockById(res.getInt("dockid")))
+					.setState(res.getBoolean("state"))
+					.setType(new BikeType().getBikeTypeById(res.getInt("typeid")));
+			
+			bikeList.add(bike);
+		}
+		
+		return bikeList;
+	}
+	
+	public Bike addBike(int id, String barcode, int batteryLife, Dock dock, boolean state,  BikeType type) throws SQLException {
+		Statement stm = ECODB.getConnection().createStatement();
+		String query = "INSERT INTO TABLE BIKE(ID, BARCODE, BATTERYLIFE, DOCK, STATE, TYPEID) VALUE (" 
+						+ id + "," + barcode + "," + batteryLife
+						+ dock.getId() + "," + state + "," + type.getId() + ";";
+		ResultSet res = stm.executeQuery(query);
+		
+		return new Bike(id, barcode, batteryLife, dock, state, type);
+	}
+	
+	public void updateBikeFieldById(String tbname, int id, String field, Object value) throws SQLException{
+		Statement stm = ECODB.getConnection().createStatement();
+		if(value instanceof String) {
+			value = "\"" + value + "\"";
+		}
+		stm.executeUpdate("update " + tbname + 
+						" set" + " " + field + "=" + value + 
+						" where id = " + id +";");
+	}
+	
+	public Bike deleteBikeById(int Id) throws SQLException {
+		Statement stm = ECODB.getConnection().createStatement();
+		String query = "DELETE FROM ECOBIKE.BIKE WHERE ID = " + id + ";";
+		ResultSet res = stm.executeQuery(query);		
+		if(res.next()) {
+			return fetchBikeFromDB(res);
+		}else {
+			return null;
+		}
+	}
 }
