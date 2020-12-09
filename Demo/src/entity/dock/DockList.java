@@ -1,5 +1,6 @@
 package entity.dock;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,10 +9,16 @@ import entity.bike.Bike;
 public class DockList {
 	
 	private List<Dock> listDock;
-	private static DockList dockInstance;
+	private static Dock dockInstance;
 	
-	public static DockList getDock() {
-		if(dockInstance == null) dockInstance = new DockList();
+	public static Dock getDock() {
+		if(dockInstance == null)
+			try {
+				dockInstance = new Dock();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		return dockInstance;
 	}
 	
@@ -44,9 +51,5 @@ public class DockList {
 		return total;
 	}
 
-	public Bike getBike() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }
