@@ -2,23 +2,29 @@ package views.screen.home;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
-
+import java.util.logging.Logger;
 
 import controller.HomeController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import views.screen.BaseScreenHandler;
 import utils.Configs;
+import utils.Utils;
 import controller.RentBikeController;
-
+import entity.dock.Dock;
 import views.screen.rentBike.RentBikeScreenHandler;
 
-public class HomeScreenHandler extends BaseScreenHandler implements Initializable{
+public class HomeScreenHandler extends BaseScreenHandler implements Initializable {
+	
+	public static Logger LOGGER = Utils.getLogger(HomeScreenHandler.class.getName());
 	
 	@FXML 
 	private Button rentBikeBtn;
@@ -31,6 +37,11 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 	
 	@FXML 
 	private ImageView ecoImage;
+	
+	@FXML
+	private ScrollPane dockPane;
+	
+	private List homeItems;
 
 	public HomeScreenHandler(Stage stage, String screenPath) throws IOException {
 		super(stage, screenPath);
@@ -44,9 +55,19 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setBController(new HomeController());
 		
+//		try {
+//			List dockList = getBController().getAllDock();
+//			this.homeItems = new ArrayList<>();
+//			for (Object object : dockList) {
+//				Dock dock = (Dock) object;
+//				
+//			}
+//		}
+		
 		rentBikeBtn.setOnMouseClicked(e -> {
 			RentBikeScreenHandler rentBikeScreen;
 			try {
+				LOGGER.info("User clicked to rent bike");
 				//Stage newStage = new Stage();
 				rentBikeScreen = new RentBikeScreenHandler(this.stage, Configs.RENT_BIKE_PATH);
 				rentBikeScreen.setHomeScreenHandler(this);

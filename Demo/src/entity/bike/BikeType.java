@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import entity.db.ECODB;
+import entity.db.ECOBIKEDB;
 
 public class BikeType {
 	
@@ -19,7 +19,7 @@ public class BikeType {
 	// boolean motor;
 	
 	public BikeType() throws SQLException {
-		stm = ECODB.getConnection().createStatement();
+		stm = ECOBIKEDB.getConnection().createStatement();
 	}
 	
 	public BikeType(int id, String name, int pedals, int saddles, int rearSeats, int rentingFee, int depositFee) throws SQLException {
