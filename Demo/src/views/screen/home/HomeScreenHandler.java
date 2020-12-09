@@ -2,6 +2,7 @@ package views.screen.home;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -13,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import views.screen.BaseScreenHandler;
@@ -38,8 +40,9 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 	@FXML 
 	private ImageView ecoImage;
 	
+	
 	@FXML
-	private ScrollPane dockPane;
+	private VBox vboxDock;
 	
 	private List homeItems;
 
@@ -55,14 +58,18 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setBController(new HomeController());
 		
-//		try {
-//			List dockList = getBController().getAllDock();
-//			this.homeItems = new ArrayList<>();
-//			for (Object object : dockList) {
-//				Dock dock = (Dock) object;
-//				
-//			}
-//		}
+		try {
+			List dockList = getBController().getAllDock();
+			this.homeItems = new ArrayList<>();
+			for (Object object : dockList) {
+				Dock dock = (Dock) object;
+				DockHandler d1 = new DockHandler(Configs.DOCK_HOME_PATH, dock, this);
+				this.homeItems.add(d1);
+			}
+		} catch (SQLException | IOException e) {
+			LOGGER.info("Errors occured: " + e.getMessage());
+			e.printStackTrace();
+		}
 		
 		rentBikeBtn.setOnMouseClicked(e -> {
 			RentBikeScreenHandler rentBikeScreen;
@@ -78,11 +85,22 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 				e1.printStackTrace();
 			}
 		});
+		
+		addDockHome(this.homeItems);
 	}
 	
 	public void setImage() {
 		// fix image path caused by fxml
 		
 	}
-	
+
+	public void addDockHome(List docks) {
+		ArrayList dockList = (ArrayList)((ArrayList) docks).clone();
+		
+		while (!dockList.isEmpty()) {
+			DockHandler dock = (DockHandler) dockList.get(0);
+			vboxDock.getChildren().add(dock.getContent());
+			dockList.remove(dock);
+		}	
+	}
 }

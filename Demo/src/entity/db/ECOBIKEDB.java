@@ -19,6 +19,9 @@ public class ECOBIKEDB {
 			String URL = "jdbc:mysql://localhost:3306/mydb";
 			String USER = "root";
 			String PASSWORD = "120914";
+			if (connect == null) {
+				System.out.print("TEST");
+			}
 			connect = DriverManager.getConnection(URL, USER, PASSWORD);
 			LOGGER.info("Connect database successfully");
 		} catch (Exception e) {
