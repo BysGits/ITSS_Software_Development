@@ -24,7 +24,11 @@
       </AnchorPane>
       <ScrollPane layoutY="150.0" prefHeight="518.0" prefWidth="1366.0">
          <content>
+<<<<<<< HEAD
             <VBox fx:id="vboxDock" maxHeight="10000.0" maxWidth="1366.0" minHeight="518.0" minWidth="1366.0" />
+=======
+            <VBox maxHeight="10000.0" maxWidth="1366.0" minHeight="518.0" minWidth="1366.0" />
+>>>>>>> 9998268eeb57598c251dfb79eedfebe805d9a52a
          </content>
       </ScrollPane>
       
