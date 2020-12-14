@@ -1,4 +1,6 @@
 
 Demo/.classpath
 Demo/.project
-Demo/bin/
+Demo/bin/.classpath
+Demo/bin/.project
+/.metadata/
