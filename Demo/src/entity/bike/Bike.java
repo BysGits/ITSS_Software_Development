@@ -7,13 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-import entity.db.ECODB;
+import entity.db.ECOBIKEDB;
 import entity.dock.Dock;
 import javafx.scene.media.Media;
+import utils.Utils;
 
 public class Bike {
 	
-//	private static Logger LOGGER = Utils.getLogger(Bike.class.getName());
+	private static Logger LOGGER = Utils.getLogger(Bike.class.getName());
 	
 //	private Statement stm;
 	private int id;
@@ -24,13 +25,13 @@ public class Bike {
 	private BikeType type;
 	
 	public Bike() throws SQLException {
-//		stm = ECODB.getConnection().createStatement();
+//		stm = ECOBIKEDB.getConnection().createStatement();
 	}
 	
 	public Bike(int id) throws SQLException{
 		this.id = id;
 		
-//		stm = ECODB.getConnection().createStatement();
+//		stm = ECOBIKEDB.getConnection().createStatement();
 	}
 	
 	public Bike(int id, String barcode, int batteryLife, Dock dock, boolean state,  BikeType type) throws SQLException {
@@ -42,7 +43,7 @@ public class Bike {
 		this.state = state;
 		this.type = type;
 		
-//		stm = ECODB.getConnection().createStatement();
+//		stm = ECOBIKEDB.getConnection().createStatement();
 	}
 
 	// getter and setter 
@@ -100,7 +101,7 @@ public class Bike {
 		return this;
 	}
 	
-	public Bike fetchBikeFromDB (ResultSet res) {
+	public Bike createNewBikeFromDB (ResultSet res) {
 		int tmpId = res.getInt("id");
 		String tmpBarcode = res.getString("barcode");
 		int tmpBatteryLife = res.getInt("batterylife");
@@ -112,12 +113,12 @@ public class Bike {
 	}
 	
 	public Bike getBikeById(int id) throws SQLException{
-		Statement stm = ECODB.getConnection().createStatement();
+		Statement stm = ECOBIKEDB.getConnection().createStatement();
 		String query = "SELECT * FROM ECOBIKE.BIKE WHERE ID =" + id + ";";
 		ResultSet res = stm.executeQuery(query);
 		
 		if(res.next()) {
-			return fetchBikeFromDB(res);
+			return createNewBikeFromDB(res);
 		}else {
 			return null;
 		}
@@ -126,7 +127,7 @@ public class Bike {
 	public List<Bike> getAllBikes() throws SQLException{
 		ArrayList<Bike> bikeList = new ArrayList<Bike>();
 		
-		Statement stm = ECODB.getConnection().createStatement();
+		Statement stm = ECOBIKEDB.getConnection().createStatement();
 		String query = "SELECT * FROM ECOBIKE.BIKE;";
 		ResultSet res = stm.executeQuery(query);
 		
@@ -146,17 +147,17 @@ public class Bike {
 	}
 	
 	public Bike addBike(int id, String barcode, int batteryLife, Dock dock, boolean state,  BikeType type) throws SQLException {
-		Statement stm = ECODB.getConnection().createStatement();
-		String query = "INSERT INTO TABLE BIKE(ID, BARCODE, BATTERYLIFE, DOCK, STATE, TYPEID) VALUE (" 
-						+ id + "," + barcode + "," + batteryLife
+		Statement stm = ECOBIKEDB.getConnection().createStatement();
+		String query = "INSERT INTO TABLE ECOBIKE.BIKE(ID, BARCODE, BATTERYLIFE, DOCK, STATE, TYPEID) VALUE (" 
+						+ id + ",\"" + barcode + "\"," + batteryLife
 						+ dock.getId() + "," + state + "," + type.getId() + ";";
-		ResultSet res = stm.executeQuery(query);
+		stm.executeQuery(query);
 		
 		return new Bike(id, barcode, batteryLife, dock, state, type);
 	}
 	
 	public void updateBikeFieldById(String tbname, int id, String field, Object value) throws SQLException{
-		Statement stm = ECODB.getConnection().createStatement();
+		Statement stm = ECOBIKEDB.getConnection().createStatement();
 		if(value instanceof String) {
 			value = "\"" + value + "\"";
 		}
@@ -165,14 +166,9 @@ public class Bike {
 						" where id = " + id +";");
 	}
 	
-	public Bike deleteBikeById(int Id) throws SQLException {
-		Statement stm = ECODB.getConnection().createStatement();
+	public void deleteBikeById(int Id) throws SQLException {
+		Statement stm = ECOBIKEDB.getConnection().createStatement();
 		String query = "DELETE FROM ECOBIKE.BIKE WHERE ID = " + id + ";";
-		ResultSet res = stm.executeQuery(query);		
-		if(res.next()) {
-			return fetchBikeFromDB(res);
-		}else {
-			return null;
-		}
+		stm.executeQuery(query);		
 	}
 }

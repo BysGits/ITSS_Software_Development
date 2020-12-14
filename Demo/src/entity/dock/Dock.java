@@ -83,40 +83,65 @@ public class Dock {
 		return this;
 	}
 
+	public Dock createNewDockFromDB (ResultSet res) throws SQLException {
+		return new Dock()
+				.setId(res.getInt("id"))
+				.setName(res.getString("name"))
+				.setAddress(res.getString("address"))
+				.setAvailableBikes(res.getInt("availableBikes"));
+	}
+	
 	public Dock getDockById(int id) throws SQLException {
-		String sql = "SELECT * FROM ecobike.Dock WHERE Dock.id = " + id + ";";
+		String sql = "SELECT * FROM ECOBIKE.DOCK WHERE ID = " + id + ";";
 		Statement stm = ECOBIKEDB.getConnection().createStatement();
 		ResultSet res = stm.executeQuery(sql);
 		if (res.next()) {
 			
-			return new Dock()
-					.setId(res.getInt("id"))
-					.setName(res.getString("name"))
-					.setAddress(res.getString("address"))
-					.setAvailableBikes(res.getInt("availableBikes"))
-					.setEmptySlots(res.getInt("emptySlots"));
+			return createNewDockFromDB(res);
+		}else {
+			return null; 
 		}
-		return null;
+		
 	}
-	public List getAllDock() throws SQLException {
+	public List<Dock> getAllDocks() throws SQLException {
 		
 		Statement stm = ECOBIKEDB.getConnection().createStatement();
-		ResultSet res = stm.executeQuery("SELECT * FROM Dock");
-		ArrayList dockList = new ArrayList<>();
+		ResultSet res = stm.executeQuery("SELECT * FROM ECOBIKE.DOCK");
+		ArrayList<Dock> dockList = new ArrayList<Dock>();
 		
 		while (res.next()) {
-			Dock dock = new Dock()
-					.setId(res.getInt("id"))
-					.setName(res.getString("name"))
-					.setAddress(res.getString("address"))
-					.setAvailableBikes(res.getInt("availableBikes"))
-					.setEmptySlots(res.getInt("emptySlots"));
+			Dock dock = createNewDockFromDB(res);
 			dockList.add(dock);
 		}
 		return dockList;
 		
 	}
 	
+	public Dock addDock(int id, String name, String address, int availableBikes, int emptySlots ) throws SQLException {
+		Statement stm = ECOBIKEDB.getConnection().createStatement();
+		String query = "INSERT INTO TABLE ECOBIKE.DOCK(ID, NAME, ADDRESS, AREA, AVAILABLEBIKES, EMPTYSLOTS) VALUE("
+						+ id + "," + name + ",\"" + address + "\"" + availableBikes + "," + emptySlots + ");";
+		stm.executeQuery(query);
+		
+		return new Dock(id, name, address, availableBikes, emptySlots);
+		
+	}
+	
+	public void updateBikeFieldById(String tbname, int id, String field, Object value) throws SQLException{
+		Statement stm = ECOBIKEDB.getConnection().createStatement();
+		if(value instanceof String) {
+			value = "\"" + value + "\"";
+		}
+		stm.executeUpdate("update " + tbname + 
+						" set" + " " + field + "=" + value + 
+						" where id = " + id +";");
+	}
+
+	public void deleteDockById(int id) throws SQLException {
+		Statement stm = ECOBIKEDB.getConnection().createStatement();
+		String query = "DELETE FROM ECOBIKE.DOCK WHERE ID = " + id + ";";
+		stm.executeQuery(query);
+	}
 
 	public Bike getBike() {
 		// TODO Auto-generated method stub

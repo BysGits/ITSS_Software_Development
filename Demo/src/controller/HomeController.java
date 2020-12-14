@@ -13,6 +13,6 @@ public class HomeController extends BaseController {
 	 * @throws SQLException
 	 */
 	public List getAllDock() throws SQLException {
-		return new Dock().getAllDock();
+		return new Dock().getAllDocks();
 	}
 }

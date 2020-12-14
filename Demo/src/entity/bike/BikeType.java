@@ -32,15 +32,6 @@ public class BikeType {
 		this.depositFee = depositFee;
 		//this.motor = motor;
 	}
-	
-//	public BikeType getBikeTypeById(int id) throws SQLException {
-//		String sql = "SELECT * FROM ";
-//		Statement stm = ECODB.getConnection().createStatement();
-//		ResultSet res = stm.executeQuery(sql);
-//		if (res.next()) {
-//			
-//		}
-//	}
 
 	// getter and setter
 	public int getId() {
@@ -98,17 +89,5 @@ public class BikeType {
 	public void setDepositFee(int depositFee) {
 		this.depositFee = depositFee;
 	}
-
-//	public boolean isMotor() {
-//		return motor;
-//	}
-//
-//	public void setMotor(boolean motor) {
-//		this.motor = motor;
-//	}
-	
-	
-	
-	
 	
 }

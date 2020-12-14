@@ -1,5 +1,13 @@
 package entity.payment;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import entity.db.ECOBIKEDB;
+
 public class PaymentTransaction {
 	
 	private String errorCode;
@@ -8,6 +16,10 @@ public class PaymentTransaction {
 	private String transactionContent;
 	private int amount;
 	private String createdAt;
+	
+	public PaymentTransaction() {
+		
+	}
 	
 	public PaymentTransaction(String errorCode, CreditCard card, String transactionId, String transactionContent, int amount, String createdAt) {
 		super();
@@ -21,5 +33,56 @@ public class PaymentTransaction {
 	
 	public String getErrorCode() {
 		return errorCode;
+	}
+	
+	public PaymentTransaction setErrorCode(String errorCode) {
+		this.errorCode = errorCode;
+		return this;
+	}
+
+	
+	public CreditCard getCard() {
+		return card;
+	}
+
+	public PaymentTransaction setCard(CreditCard card) {
+		this.card = card;
+		return this;
+	}
+
+	public String getTransactionId() {
+		return transactionId;
+	}
+
+	public PaymentTransaction setTransactionId(String transactionId) {
+		this.transactionId = transactionId;
+		return this;
+	}
+
+	public String getTransactionContent() {
+		return transactionContent;
+	}
+
+	public PaymentTransaction setTransactionContent(String transactionContent) {
+		this.transactionContent = transactionContent;
+		return this;
+	}
+
+	public int getAmount() {
+		return amount;
+	}
+
+	public PaymentTransaction setAmount(int amount) {
+		this.amount = amount;
+		return this;
+	}
+
+	public String getCreatedAt() {
+		return createdAt;
+	}
+
+	public PaymentTransaction setCreatedAt(String createdAt) {
+		this.createdAt = createdAt;
+		return this;
 	}
 }

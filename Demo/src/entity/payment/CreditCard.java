@@ -1,5 +1,7 @@
 package entity.payment;
 
+import java.sql.Timestamp;
+
 public class CreditCard {
 
 	private String cardCode;
