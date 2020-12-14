@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-=======
-/.idea/
-/Demo.iml
-/application/
-/controller/
->>>>>>> 9998268eeb57598c251dfb79eedfebe805d9a52a
-/entity/
+/bin1/
 /views/
+/entity/
