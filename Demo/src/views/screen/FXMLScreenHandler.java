@@ -19,6 +19,7 @@ public class FXMLScreenHandler {
 		// Set this class as the controller
 		this.loader.setController(this);
 		this.content = (AnchorPane) loader.load();
+		System.out.println(this.content);
 	}
 	
 	public AnchorPane getContent() {

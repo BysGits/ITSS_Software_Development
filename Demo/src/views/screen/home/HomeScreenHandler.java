@@ -14,13 +14,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import views.screen.BaseScreenHandler;
+import views.screen.bike.BikeScreenHandler;
 import utils.Configs;
 import utils.Utils;
 import controller.RentBikeController;
+import controller.ViewDockController;
 import entity.dock.Dock;
 import views.screen.rentBike.RentBikeScreenHandler;
 
@@ -42,7 +45,9 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 	
 	
 	@FXML
-	private VBox vboxDock;
+	private FlowPane flowPaneDock;
+	
+	
 	
 	private List homeItems;
 
@@ -50,6 +55,14 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 		super(stage, screenPath);
 	}
 	
+	public Stage getStage() {
+		//System.out.println(this.stage.toString());
+		return this.stage;
+	}
+	
+	public HomeScreenHandler getHomeScreenHandler() {
+		return this;
+	}
 	public HomeController getBController() {
 		return (HomeController) super.getBController();
 	}
@@ -61,6 +74,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 		try {
 			List dockList = getBController().getAllDock();
 			this.homeItems = new ArrayList<>();
+			int count = 0;
 			for (Object object : dockList) {
 				Dock dock = (Dock) object;
 				DockHandler d1 = new DockHandler(Configs.DOCK_HOME_PATH, dock, this);
@@ -75,12 +89,12 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 			RentBikeScreenHandler rentBikeScreen;
 			try {
 				LOGGER.info("User clicked to rent bike");
-				//Stage newStage = new Stage();
+				Stage newStage = new Stage();
 				rentBikeScreen = new RentBikeScreenHandler(this.stage, Configs.RENT_BIKE_PATH);
 				rentBikeScreen.setHomeScreenHandler(this);
 				rentBikeScreen.setBController(new RentBikeController());
 				rentBikeScreen.requestToRentBike(this);
-				//this.stage.set
+				
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
@@ -99,8 +113,9 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 		
 		while (!dockList.isEmpty()) {
 			DockHandler dock = (DockHandler) dockList.get(0);
-			vboxDock.getChildren().add(dock.getContent());
+			flowPaneDock.getChildren().add(dock.getContent());
 			dockList.remove(dock);
 		}	
 	}
+
 }
