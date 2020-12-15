@@ -25,7 +25,6 @@
       <ScrollPane layoutY="150.0" prefHeight="518.0" prefWidth="1366.0">
          <content>
             <VBox fx:id="vboxDock" maxHeight="10000.0" maxWidth="1366.0" minHeight="518.0" minWidth="1366.0" />
-            <VBox maxHeight="10000.0" maxWidth="1366.0" minHeight="518.0" minWidth="1366.0" />
          </content>
       </ScrollPane>
       

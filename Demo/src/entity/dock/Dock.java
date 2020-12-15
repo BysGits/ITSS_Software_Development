@@ -92,7 +92,7 @@ public class Dock {
 	}
 	
 	public Dock getDockById(int id) throws SQLException {
-		String sql = "SELECT * FROM ECOBIKE.DOCK WHERE ID = " + id + ";";
+		String sql = "SELECT * FROM DOCK WHERE ID = " + id + ";";
 		Statement stm = ECOBIKEDB.getConnection().createStatement();
 		ResultSet res = stm.executeQuery(sql);
 		if (res.next()) {
@@ -106,7 +106,7 @@ public class Dock {
 	public List<Dock> getAllDocks() throws SQLException {
 		
 		Statement stm = ECOBIKEDB.getConnection().createStatement();
-		ResultSet res = stm.executeQuery("SELECT * FROM ECOBIKE.DOCK");
+		ResultSet res = stm.executeQuery("SELECT * FROM DOCK");
 		ArrayList<Dock> dockList = new ArrayList<Dock>();
 		
 		while (res.next()) {
@@ -119,7 +119,7 @@ public class Dock {
 	
 	public Dock addDock(int id, String name, String address, int availableBikes, int emptySlots ) throws SQLException {
 		Statement stm = ECOBIKEDB.getConnection().createStatement();
-		String query = "INSERT INTO TABLE ECOBIKE.DOCK(ID, NAME, ADDRESS, AREA, AVAILABLEBIKES, EMPTYSLOTS) VALUE("
+		String query = "INSERT INTO TABLE DOCK(ID, NAME, ADDRESS, AREA, AVAILABLEBIKES, EMPTYSLOTS) VALUE("
 						+ id + "," + name + ",\"" + address + "\"" + availableBikes + "," + emptySlots + ");";
 		stm.executeQuery(query);
 		
@@ -139,7 +139,7 @@ public class Dock {
 
 	public void deleteDockById(int id) throws SQLException {
 		Statement stm = ECOBIKEDB.getConnection().createStatement();
-		String query = "DELETE FROM ECOBIKE.DOCK WHERE ID = " + id + ";";
+		String query = "DELETE FROM DOCK WHERE ID = " + id + ";";
 		stm.executeQuery(query);
 	}
 

@@ -128,7 +128,7 @@ public class BikeType {
 	
 	public BikeType getBikeTypeById(int id) throws SQLException{
 		Statement stm = ECOBIKEDB.getConnection().createStatement();
-		String query = "SELECT * FROM ECOBIKE.BIKETYPE WHERE ID = " + id + ";";
+		String query = "SELECT * FROM BIKETYPE WHERE ID = " + id + ";";
 		ResultSet res = stm.executeQuery(query);
 		
 		if(res.next()) {
@@ -142,7 +142,7 @@ public class BikeType {
 		ArrayList<BikeType> bikeTypeList = new ArrayList<BikeType>();
 		
 		Statement stm = ECOBIKEDB.getConnection().createStatement();
-		String query = "SELECT * FROM ECOBIKE.BIKETYPE";
+		String query = "SELECT * FROM BIKETYPE";
 		ResultSet res = stm.executeQuery(query);
 		
 		while(res.next()) {
