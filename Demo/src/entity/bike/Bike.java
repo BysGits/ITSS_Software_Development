@@ -101,7 +101,7 @@ public class Bike {
 		return this;
 	}
 	
-	public Bike createNewBikeFromDB (ResultSet res) {
+	public Bike createNewBikeFromDB (ResultSet res) throws SQLException {
 		int tmpId = res.getInt("id");
 		String tmpBarcode = res.getString("barcode");
 		int tmpBatteryLife = res.getInt("batterylife");
@@ -114,7 +114,7 @@ public class Bike {
 	
 	public Bike getBikeById(int id) throws SQLException{
 		Statement stm = ECOBIKEDB.getConnection().createStatement();
-		String query = "SELECT * FROM ECOBIKE.BIKE WHERE ID =" + id + ";";
+		String query = "SELECT * FROM ECOBIKE.BIKE WHERE ID = " + id + ";";
 		ResultSet res = stm.executeQuery(query);
 		
 		if(res.next()) {
