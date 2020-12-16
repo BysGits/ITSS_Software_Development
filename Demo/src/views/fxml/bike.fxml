@@ -5,9 +5,9 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
 
-
-<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="150.0" prefWidth="1366.0">
          <children>
@@ -19,9 +19,9 @@
          </children>
       </AnchorPane>
       <ScrollPane layoutY="125.0" prefHeight="580.0" prefWidth="1366.0">
-        <content>
-          <AnchorPane maxHeight="10000.0" maxWidth="1366.0" minHeight="518.0" minWidth="1366.0" />
-        </content>
+         <content>
+            <FlowPane fx:id="flowPaneBike" prefHeight="600.0" prefWidth="1366.0" />
+         </content>
       </ScrollPane>
       <Button layoutX="1165.0" layoutY="715.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="124.0" text="Exit" />
    </children>

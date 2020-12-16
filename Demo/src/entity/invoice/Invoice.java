@@ -63,37 +63,37 @@ public class Invoice {
 		return this;
 	}
 	
-	public Invoice createNewInvoiceFromDB (ResultSet res) throws SQLException {
-		return new Invoice()
-				.setId(res.getInt("id"))
-				.setRent(new Rent().getRentById(res.getInt("rentId")))
-				.setTotalAmount(res.getInt("totalamount"));
-	}
-	
-	public Invoice getInvoiceById (int id) throws SQLException {
-		Statement stm = ECOBIKEDB.getConnection().createStatement();
-		String query = "SELECT * FROM ECOBIKE.INVOICE WHERE ID =" + id + ";";
-		ResultSet res = stm.executeQuery(query);
-		if(res.next()) {
-			return createNewInvoiceFromDB(res);
-		}else {
-			return null;
-		}
-	}
-	
-	public List<Invoice> getAllInvoices() throws SQLException{
-		ArrayList<Invoice> invoiceList = new ArrayList<Invoice>();
-		
-		Statement stm = ECOBIKEDB.getConnection().createStatement();
-		String query = "SELECT * FROM ECOBIKE.INVOICE;";
-		ResultSet res = stm.executeQuery(query);
-		
-		while(res.next()) {
-			invoiceList.add(createNewInvoiceFromDB(res));
-		}
-		return invoiceList;
-	}
-	
+//	public Invoice createNewInvoiceFromDB (ResultSet res) throws SQLException {
+//		return new Invoice()
+//				.setId(res.getInt("id"))
+//				.setRent(new Rent().getRentById(res.getInt("rentId")))
+//				.setTotalAmount(res.getInt("totalamount"));
+//	}
+//	
+//	public Invoice getInvoiceById (int id) throws SQLException {
+//		Statement stm = ECOBIKEDB.getConnection().createStatement();
+//		String query = "SELECT * FROM ECOBIKE.INVOICE WHERE ID =" + id + ";";
+//		ResultSet res = stm.executeQuery(query);
+//		if(res.next()) {
+//			return createNewInvoiceFromDB(res);
+//		}else {
+//			return null;
+//		}
+//	}
+//	
+//	public List<Invoice> getAllInvoices() throws SQLException{
+//		ArrayList<Invoice> invoiceList = new ArrayList<Invoice>();
+//		
+//		Statement stm = ECOBIKEDB.getConnection().createStatement();
+//		String query = "SELECT * FROM ECOBIKE.INVOICE;";
+//		ResultSet res = stm.executeQuery(query);
+//		
+//		while(res.next()) {
+//			invoiceList.add(createNewInvoiceFromDB(res));
+//		}
+//		return invoiceList;
+//	}
+//	
 	public Invoice addInvoice (int id, Rent rent, int totalAmount) throws SQLException{
 		Statement stm = ECOBIKEDB.getConnection().createStatement();
 		String query = "INSERT INTO TABLE ECOBIKE.INVOICE(ID, RENTID, TOTALAMOUNT) VALUE (" 

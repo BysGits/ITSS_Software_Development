@@ -2,7 +2,7 @@ package views.screen.home;
 
 import views.screen.BaseScreenHandler;
 import views.screen.FXMLScreenHandler;
-import views.screen.bike.BikeScreenHandler;
+import views.screen.dock.DockScreenHandler;
 import views.screen.rentBike.RentBikeScreenHandler;
 
 import java.io.IOException;
@@ -42,6 +42,13 @@ public class DockHandler extends BaseScreenHandler {
 	private Dock dock;
 	private HomeScreenHandler home;
 	
+//	public int getDockId() {
+//		return this.dock.getId();
+//	}
+//	public Stage getStage() {
+//		return home.getStage();
+//	}
+	
 	public DockHandler(String screenPath, Dock dock, HomeScreenHandler home) throws IOException, SQLException{
 		super(screenPath);
 		this.dock = dock;
@@ -50,11 +57,14 @@ public class DockHandler extends BaseScreenHandler {
 		
 	
 		chooseBtn.setOnMouseClicked(e -> {
-			BikeScreenHandler dockScreen;
+		
+			DockScreenHandler dockScreen;
 			try {
 				LOGGER.info("User clicked to view dock.");
-				dockScreen = new BikeScreenHandler(home.getStage(), Configs.DOCK_PATH);
+				dockScreen = new DockScreenHandler(home.getStage(), Configs.DOCK_PATH, dock);
+				//System.out.println(dock.getId());
 				dockScreen.requestToViewDock(home);
+				
 				
 			} catch (IOException e1) {
 				e1.printStackTrace();
@@ -67,7 +77,7 @@ public class DockHandler extends BaseScreenHandler {
 	
 	
 	private void setDockInfo() throws SQLException {
-		
+		System.out.println(dock.getId());
 		dockName.setText(dock.getName());
 		dockAddress.setText(dock.getAddress());
 		dockAvailableBikes.setText(Integer.toString(dock.getAvailableBikes()));

@@ -12,14 +12,17 @@ import entity.dock.Dock;
 public class BikeType {
 	
 //	private Statement stm;
-	private int id;
-	private String name;
-	private int pedals;
-	private int saddles;
-	private int rearSeats;
-	private int rentingFee;
-	private int depositFee;
-	private boolean motor;
+	protected int id;
+	protected String type;
+	protected String barcode;
+	protected int pedals;
+	protected int saddles;
+	protected int rearSeats;
+	protected int rentingFee;
+	protected int depositFee;
+	protected boolean state;
+	protected int dockId;
+	protected int battery;
 
 	public BikeType() throws SQLException {
 //		stm = ECOBIKEDB.getConnection().createStatement();
@@ -29,15 +32,18 @@ public class BikeType {
 		this.id = id;
 	}
 	
-	public BikeType(int id, String name, int pedals, int saddles, int rearSeats, int rentingFee, int depositFee, boolean motor) throws SQLException {
+	public BikeType(int id, String type, String barcode, int pedals, int saddles, int rearSeats, int rentingFee, int depositFee, boolean state, int dockId, int battery) throws SQLException {
 		this.id = id;
-		this.name = name;
+		this.type = type;
+		this.barcode = barcode;
 		this.pedals = pedals;
 		this.saddles = saddles;
 		this.rearSeats = rearSeats;
 		this.rentingFee = rentingFee;
 		this.depositFee = depositFee;
-		this.motor = motor;
+		this.state = state;
+		this.dockId = dockId;
+		this.battery = battery;
 	}
 
 	// getter and setter
@@ -49,13 +55,22 @@ public class BikeType {
 		this.id = id;
 		return this;
 	}
-
-	public String getName() {
-		return name;
+	
+	public String getType() {
+		return type;
 	}
-
-	public BikeType setName(String name) {
-		this.name = name;
+	
+	public BikeType setType(String type) {
+		this.type = type;
+		return this;
+	}
+	
+	public String getBarcode() {
+		return barcode;
+	}
+	
+	public BikeType setBarcode(String barcode) {
+		this.barcode = barcode;
 		return this;
 	}
 
@@ -103,54 +118,80 @@ public class BikeType {
 		this.depositFee = depositFee;
 		return this;
 	}
-
-	public boolean isMotor() {
-		return motor;
+	
+	public boolean getState() {
+		return state;
 	}
-
-	public BikeType setMotor(boolean motor) {
-		this.motor = motor;
+	
+	public BikeType setState(boolean state) {
+		this.state = state;
 		return this;
 	}
 	
-	public BikeType createNewBikeTypeFromDB (ResultSet res) throws SQLException{
+	public int getDockId() {
+		return dockId;
+	}
+	
+	public BikeType setDockId(int dockId) {
+		this.dockId = dockId;
+		return this;
+	}
+
+	public int getBattery() {
+		return battery;
+	}
+	
+	public BikeType createNewBikeFromDB (ResultSet res) throws SQLException{
 		int tmpId = res.getInt("id");
-		String tmpName = res.getString("name");
+		String tmpType = res.getString("type");
+		String tmpBarcode = res.getString("barcode");
 		int tmpPedals = res.getInt("pedals");
-		int tmpSaddels = res.getInt("saddels");
+		int tmpSaddles = res.getInt("saddles");
 		int tmpRearSeats = res.getInt("rearSeats");
 		int tmpRentingFee = res.getInt("rentingFee");
 		int tmpDepositFee = res.getInt("depositFee");
-		boolean tmpMotor = res.getBoolean("motor");
+		boolean tmpState = res.getBoolean("state");
+		int tmpDockId = res.getInt("dockId");
+		int tmpBattery = res.getInt("battery");
 		
-		return new BikeType(tmpId, tmpName, tmpPedals, tmpSaddels, tmpRearSeats, tmpRentingFee, tmpDepositFee, tmpMotor);
+		return new BikeType(tmpId, tmpType, tmpBarcode, tmpPedals, tmpSaddles, tmpRearSeats, tmpRentingFee, tmpDepositFee, tmpState, tmpDockId, tmpBattery);
 	}
+//	
+//	public BikeType getBikeById(int id) throws SQLException{
+//		Statement stm = ECOBIKEDB.getConnection().createStatement();
+//		String query = "SELECT * FROM BIKE WHERE ID = " + id + ";";
+//		ResultSet res = stm.executeQuery(query);
+//		
+//		
+//		
+//	}
+//	
+//	public List<BikeType> getAllBikeTypes() throws SQLException{
+//		ArrayList<BikeType> bikeTypeList = new ArrayList<BikeType>();
+//		
+//		Statement stm = ECOBIKEDB.getConnection().createStatement();
+//		String query = "SELECT * FROM BIKETYPE";
+//		ResultSet res = stm.executeQuery(query);
+//		
+//		while(res.next()) {
+//			BikeType bikeType = createNewBikeTypeFromDB(res);
+//			bikeTypeList.add(bikeType);
+//		}
+//		
+//		return bikeTypeList;
+//	}
+//	
 	
-	public BikeType getBikeTypeById(int id) throws SQLException{
+	public List<BikeType> getBikeByDockId(int dockId) throws SQLException{
 		Statement stm = ECOBIKEDB.getConnection().createStatement();
-		String query = "SELECT * FROM BIKETYPE WHERE ID = " + id + ";";
+		String query = "SELECT * FROM BIKE INNER JOIN BIKETYPE ON BIKE.typeId = BIKETYPE.Id WHERE dockId = " + dockId + ";";
 		ResultSet res = stm.executeQuery(query);
+		ArrayList<BikeType> bikeList = new ArrayList<BikeType>();
 		
-		if(res.next()) {
-			return createNewBikeTypeFromDB(res);
-		}else {
-			return null;
+		while (res.next()) {
+			BikeType bike = createNewBikeFromDB(res);
+			bikeList.add(bike);
 		}
+		return bikeList;
 	}
-	
-	public List<BikeType> getAllBikeTypes() throws SQLException{
-		ArrayList<BikeType> bikeTypeList = new ArrayList<BikeType>();
-		
-		Statement stm = ECOBIKEDB.getConnection().createStatement();
-		String query = "SELECT * FROM BIKETYPE";
-		ResultSet res = stm.executeQuery(query);
-		
-		while(res.next()) {
-			BikeType bikeType = createNewBikeTypeFromDB(res);
-			bikeTypeList.add(bikeType);
-		}
-		
-		return bikeTypeList;
-	}
-	
 }

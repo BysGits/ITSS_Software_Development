@@ -101,51 +101,51 @@ public class Bike {
 		return this;
 	}
 	
-	public Bike createNewBikeFromDB (ResultSet res) throws SQLException {
-		int tmpId = res.getInt("id");
-		String tmpBarcode = res.getString("barcode");
-		int tmpBatteryLife = res.getInt("batterylife");
-		Dock tmpDock = new Dock().getDockById(res.getInt("dockid"));
-		boolean tmpState = res.getBoolean("state");
-		BikeType tmpBikeType = new BikeType().getBikeTypeById(res.getInt("typeid"));
-		
-		return new Bike(tmpId, tmpBarcode, tmpBatteryLife, tmpDock, tmpState, tmpBikeType);
-	}
-	
-	public Bike getBikeById(int id) throws SQLException{
-		Statement stm = ECOBIKEDB.getConnection().createStatement();
-		String query = "SELECT * FROM ECOBIKE.BIKE WHERE ID = " + id + ";";
-		ResultSet res = stm.executeQuery(query);
-		
-		if(res.next()) {
-			return createNewBikeFromDB(res);
-		}else {
-			return null;
-		}
-	}
-	
-	public List<Bike> getAllBikes() throws SQLException{
-		ArrayList<Bike> bikeList = new ArrayList<Bike>();
-		
-		Statement stm = ECOBIKEDB.getConnection().createStatement();
-		String query = "SELECT * FROM ECOBIKE.BIKE;";
-		ResultSet res = stm.executeQuery(query);
-		
-		while(res.next()) {
-			Bike bike = new Bike()
-					.setId(res.getInt("id"))
-					.setBarcode(res.getString("barcode"))
-					.setBatteryLife(res.getInt("batterylife"))
-					.setDock(new Dock().getDockById(res.getInt("dockid")))
-					.setState(res.getBoolean("state"))
-					.setType(new BikeType().getBikeTypeById(res.getInt("typeid")));
-			
-			bikeList.add(bike);
-		}
-		
-		return bikeList;
-	}
-	
+//	public Bike createNewBikeFromDB (ResultSet res) throws SQLException {
+//		int tmpId = res.getInt("id");
+//		String tmpBarcode = res.getString("barcode");
+//		int tmpBatteryLife = res.getInt("batterylife");
+//		Dock tmpDock = new Dock().getDockById(res.getInt("dockid"));
+//		boolean tmpState = res.getBoolean("state");
+//		BikeType tmpBikeType = new BikeType().getBikeByDockId(res.getInt("typeid"));
+//		
+//		return new Bike(tmpId, tmpBarcode, tmpBatteryLife, tmpDock, tmpState, tmpBikeType);
+//	}
+//	
+//	public Bike getBikeById(int id) throws SQLException{
+//		Statement stm = ECOBIKEDB.getConnection().createStatement();
+//		String query = "SELECT * FROM ECOBIKE.BIKE WHERE ID = " + id + ";";
+//		ResultSet res = stm.executeQuery(query);
+//		
+//		if(res.next()) {
+//			return createNewBikeFromDB(res);
+//		}else {
+//			return null;
+//		}
+//	}
+//	
+//	public List<Bike> getAllBikes() throws SQLException{
+//		ArrayList<Bike> bikeList = new ArrayList<Bike>();
+//		
+//		Statement stm = ECOBIKEDB.getConnection().createStatement();
+//		String query = "SELECT * FROM ECOBIKE.BIKE;";
+//		ResultSet res = stm.executeQuery(query);
+//		
+//		while(res.next()) {
+//			Bike bike = new Bike()
+//					.setId(res.getInt("id"))
+//					.setBarcode(res.getString("barcode"))
+//					.setBatteryLife(res.getInt("batterylife"))
+//					.setDock(new Dock().getDockById(res.getInt("dockid")))
+//					.setState(res.getBoolean("state"))
+//					.setType(new BikeType().getBikeTypeById(res.getInt("typeid")));
+//			
+//			bikeList.add(bike);
+//		}
+//		
+//		return bikeList;
+//	}
+//	
 	public Bike addBike(int id, String barcode, int batteryLife, Dock dock, boolean state,  BikeType type) throws SQLException {
 		Statement stm = ECOBIKEDB.getConnection().createStatement();
 		String query = "INSERT INTO TABLE ECOBIKE.BIKE(ID, BARCODE, BATTERYLIFE, DOCK, STATE, TYPEID) VALUE (" 

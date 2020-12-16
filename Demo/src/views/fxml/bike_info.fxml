@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+   <children>
+      <AnchorPane prefHeight="150.0" prefWidth="1366.0">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../assets/images/logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="518.0" fitWidth="683.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../assets/images/logo.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutY="668.0" prefHeight="100.0" prefWidth="1366.0" />
+      <AnchorPane layoutX="683.0" layoutY="142.0" prefHeight="518.0" prefWidth="638.0">
+         <children>
+            <GridPane layoutX="154.0" layoutY="99.0" prefHeight="518.0" prefWidth="638.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="314.0" minWidth="10.0" prefWidth="172.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="530.0" minWidth="10.0" prefWidth="466.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Barcode">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="10.0" layoutY="30.0" text="Type" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="10.0" layoutY="104.0" text="Feature" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="10.0" layoutY="178.0" text="Battery" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="10.0" layoutY="252.0" text="Current dock" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="10.0" layoutY="326.0" text="Renting fee" GridPane.rowIndex="5">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="10.0" layoutY="400.0" text="Deposit fee" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="barcode" layoutX="10.0" layoutY="30.0" text="Data" GridPane.columnIndex="1">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="type" layoutX="160.0" layoutY="30.0" text="Data" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="feature" layoutX="160.0" layoutY="30.0" text="Data" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="battery" layoutX="160.0" layoutY="104.0" text="Data" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="dock" layoutX="160.0" layoutY="252.0" text="Data" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="rentingFee" layoutX="160.0" layoutY="326.0" text="Data" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="depositFee" layoutX="160.0" layoutY="400.0" text="Data" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

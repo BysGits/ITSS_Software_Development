@@ -19,7 +19,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import views.screen.BaseScreenHandler;
-import views.screen.bike.BikeScreenHandler;
+import views.screen.dock.DockScreenHandler;
 import utils.Configs;
 import utils.Utils;
 import controller.RentBikeController;

@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="200.0" prefWidth="1366.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+<AnchorPane prefHeight="200.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox prefHeight="200.0" prefWidth="1366.0">
          <children>
@@ -19,12 +18,12 @@
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="500.0">
                <children>
-                  <Label layoutX="210.0" layoutY="109.0" text="Label">
+                  <Label fx:id="bikeType" layoutX="210.0" layoutY="109.0" text="Label">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="210.0" layoutY="38.0" text="Label">
+                  <Label fx:id="barcode" layoutX="210.0" layoutY="38.0" text="Label">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -48,7 +47,7 @@
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <Label layoutX="210.0" layoutY="38.0" text="Label">
+                  <Label fx:id="battery" layoutX="210.0" layoutY="38.0" text="Label">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -57,7 +56,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="216.0">
                <children>
-                  <Button layoutX="40.0" layoutY="74.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="120.0" text="Rent">
+                  <Button fx:id="rentBtn" layoutX="40.0" layoutY="74.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="120.0" text="Rent">
                      <font>
                         <Font size="24.0" />
                      </font>
