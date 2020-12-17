@@ -62,6 +62,7 @@ public class DockHandler extends BaseScreenHandler {
 			try {
 				LOGGER.info("User clicked to view dock.");
 				dockScreen = new DockScreenHandler(home.getStage(), Configs.DOCK_PATH, dock);
+				dockScreen.setHomeScreenHandler(home);
 				//System.out.println(dock.getId());
 				dockScreen.requestToViewDock(home);
 				

@@ -13,6 +13,7 @@ import entity.bike.BikeType;
 import entity.dock.Dock;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 import utils.Configs;
@@ -27,14 +28,17 @@ public class DockScreenHandler extends BaseScreenHandler implements Initializabl
 	@FXML
 	private FlowPane flowPaneBike;
 	
+	@FXML
+	private ImageView logo;
+	
 	private List dockItems;
 	private Dock dock;
 	private Stage stage;
 	
 	
-//	public Stage getStage() {
-//		return this.stage
-//	}
+	public Stage getStage() {
+		return homeScreenHandler.getStage();
+	}
 	
 	public DockScreenHandler(Stage stage, String screenPath, Dock dock) throws IOException {
 		super(stage, screenPath);
@@ -58,6 +62,10 @@ public class DockScreenHandler extends BaseScreenHandler implements Initializabl
 			e.printStackTrace();
 		}
 		
+		logo.setOnMouseClicked(e -> {
+			homeScreenHandler.show();
+		});
+		
 		addBike(this.dockItems);
 	}
 	
@@ -65,9 +73,10 @@ public class DockScreenHandler extends BaseScreenHandler implements Initializabl
 		return (HomeController) super.getBController();
 	}
 	
-	public HomeScreenHandler getHomeScreenHandler() {
-		return this.getHomeScreenHandler();
-	}
+//	public void setDockScreenHandler(DockScreenHandler dockScreenHandler) {
+//		
+//	}
+	
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
