@@ -194,4 +194,22 @@ public class BikeType {
 		}
 		return bikeList;
 	}
+	
+	public BikeType getBikeByBarcode(String barcode) throws SQLException {
+		Statement stm = ECOBIKEDB.getConnection().createStatement();
+		String query = "SELECT * FROM BIKE INNER JOIN BIKETYPE ON BIKE.typeId = BIKETYPE.Id WHERE BIKE.barcode = '" + barcode + "';";
+		ResultSet res = stm.executeQuery(query);
+		
+		
+		if (res.next()) {
+			System.out.println("CHECK1");
+			return createNewBikeFromDB(res);
+		} else {
+			return null;
+		}
+		
+		
+		
+		
+	}
 }

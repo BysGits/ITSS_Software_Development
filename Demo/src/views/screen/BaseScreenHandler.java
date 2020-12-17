@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import views.screen.dock.DockScreenHandler;
 import views.screen.home.HomeScreenHandler;
+import views.screen.rentBike.RentBikeScreenHandler;
 
 public class BaseScreenHandler extends FXMLScreenHandler {
 	
@@ -16,6 +17,7 @@ public class BaseScreenHandler extends FXMLScreenHandler {
 	protected Stage stage;
 	protected HomeScreenHandler homeScreenHandler;
 	protected DockScreenHandler dockScreenHandler;
+	protected RentBikeScreenHandler rentBikeScreenHandler;
 	protected Hashtable<String, String> messages;
 	private BaseController bController;
 	
@@ -68,5 +70,10 @@ public class BaseScreenHandler extends FXMLScreenHandler {
 	
 	public void setDockScreenHandler(DockScreenHandler DockScreenHandler) {
 		this.dockScreenHandler = DockScreenHandler;
+	}
+	
+	public Stage getStage() {
+		// TODO Auto-generated method stub
+		return this.stage;
 	}
 }

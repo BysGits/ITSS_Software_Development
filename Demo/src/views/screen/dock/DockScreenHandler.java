@@ -21,7 +21,7 @@ import utils.Utils;
 import views.screen.BaseScreenHandler;
 import views.screen.home.HomeScreenHandler;
 
-public class DockScreenHandler extends BaseScreenHandler implements Initializable {
+public class DockScreenHandler extends BaseScreenHandler {
 	
 	public static Logger LOGGER = Utils.getLogger(HomeScreenHandler.class.getName());
 	
@@ -73,35 +73,10 @@ public class DockScreenHandler extends BaseScreenHandler implements Initializabl
 		return (HomeController) super.getBController();
 	}
 	
-//	public void setDockScreenHandler(DockScreenHandler dockScreenHandler) {
-//		
-//	}
+
 	
 	
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-//		setBController(new HomeController());
-//		
-//		
-//		try {
-//			List bikeList = getBController().getAllBikesByDockId(1);
-//			
-//			this.dockItems = new ArrayList<>();
-//			
-//			for (Object object : bikeList) {
-//				
-//				BikeType bike = (BikeType) object;
-//				BikeHandler b1 = new BikeHandler(Configs.DOCK_BIKE_PATH, bike, this);
-//				this.dockItems.add(b1);
-//			}
-//			System.out.println(this.dockItems.size());
-//		} catch (SQLException | IOException e) {
-//			LOGGER.info("Errors occured: " + e.getMessage());
-//			e.printStackTrace();
-//		}
-		
-		//addBike(this.dockItems);
-	}
+
 	public void addBike(List bikes) {
 		ArrayList bikeList = (ArrayList)((ArrayList) bikes).clone();
 		while (!bikeList.isEmpty()) {

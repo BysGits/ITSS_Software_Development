@@ -1,12 +1,16 @@
 package views.screen.rentBike;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.logging.LogManager;
 
 import java.util.logging.Logger;
 
+import controller.HomeController;
+import entity.bike.BikeType;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -33,13 +37,17 @@ public class RentBikeScreenHandler extends BaseScreenHandler {
 	@FXML 
 	private Button rentBtn;
 	
+	@FXML
+	private TextField barcode;
+	
+	public HomeController getBController() {
+		return (HomeController) super.getBController();
+	}
+	
 	public RentBikeScreenHandler(Stage stage, String screenPath) throws IOException {
 		super(stage, screenPath);
+		
 		// TODO Auto-generated constructor stub
-		enterBtn.setOnMouseClicked(e -> {
-			LOGGER.info("User has just entered barcode and the program shows the bike's info");
-			bikeInfoPane.setVisible(true);
-		});
 		
 		ecoImage.setOnMouseClicked(e -> {
 			LOGGER.info("User clicked the logo to return the homepage");
@@ -51,10 +59,27 @@ public class RentBikeScreenHandler extends BaseScreenHandler {
 			try {
 				LOGGER.info("User clicked to rent bike and navigate to input card info");
 				cardScreen = new CardScreenHandler(this.stage, Configs.CARD_PATH);
-				//cardScreen.setHomeScreenHandler(this);
+				cardScreen.setHomeScreenHandler(homeScreenHandler);
+				//cardScreen.setRentBikeScreenHandler(rentBikeScreenHandler);
 				//cardScreen.setBController(new CardScreenHandler());
 				cardScreen.requestToCardScreen(this);
 			} catch(IOException e1) {
+				e1.printStackTrace();
+			}
+		});
+		
+		enterBtn.setOnMouseClicked(e -> {
+			LOGGER.info("User has just entered barcode and the program shows the bike's info");
+			System.out.println(barcode.getText());
+			try {
+				BikeType bike = getBController().getBikeByBarcode(barcode.getText().toString());
+				if (bike == null) {
+					System.out.println("WRONG");
+				} else {
+					System.out.println(bike.getBarcode());
+					bikeInfoPane.setVisible(true);
+				}
+			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
 		});
@@ -67,7 +92,4 @@ public class RentBikeScreenHandler extends BaseScreenHandler {
 		
 		show();
 	}
-
-	//private static Logger LOGGER = Utils.getLogger()
-	
 }
