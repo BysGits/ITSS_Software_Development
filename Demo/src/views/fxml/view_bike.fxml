@@ -14,14 +14,14 @@
    <children>
       <AnchorPane layoutX="1.0" prefHeight="150.0" prefWidth="1366.0">
          <children>
-            <ImageView fx:id="ecoImage" fitHeight="154.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="ecoImage" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../assets/images/logo.png" />
                </image>
             </ImageView>
-            <Text fill="#34b908" layoutX="186.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RENT INFORMATION">
+            <Text fill="#a1cf51" layoutX="170.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RENT INFORMATION">
                <font>
-                  <Font size="36.0" />
+                  <Font size="48.0" />
                </font>
             </Text>
          </children>
