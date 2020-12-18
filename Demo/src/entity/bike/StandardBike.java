@@ -8,7 +8,7 @@ import java.util.List;
 
 import entity.db.ECOBIKEDB;
 
-public class StandardBike extends BikeType {
+public class StandardBike extends Bike {
 
 	public StandardBike() throws SQLException {
 		
@@ -19,14 +19,14 @@ public class StandardBike extends BikeType {
 //	}
 	
 	@Override
-	public List<BikeType> getBikeByDockId(int dockId) throws SQLException {
+	public List<Bike> getBikeByDockId(int dockId) throws SQLException {
 		Statement stm = ECOBIKEDB.getConnection().createStatement();
 		String query = "SELECT * FROM BIKE WHERE typeId = 1 AND dockId = " + dockId + ";";
 		ResultSet res = stm.executeQuery(query);
-		ArrayList<BikeType> bikeList = new ArrayList<BikeType>();
+		ArrayList<Bike> bikeList = new ArrayList<Bike>();
 		
 		while (res.next()) {
-			BikeType bike = createNewBikeFromDB(res);
+			Bike bike = createNewBikeFromDB(res);
 			bikeList.add(bike);
 		}
 		return bikeList;

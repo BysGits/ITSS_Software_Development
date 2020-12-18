@@ -1,9 +1,11 @@
 package views.screen.bike;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.logging.Logger;
 
-import entity.bike.BikeType;
+import controller.HomeController;
+import entity.bike.Bike;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,6 +15,7 @@ import utils.Configs;
 import utils.Utils;
 import views.screen.BaseScreenHandler;
 import views.screen.dock.DockScreenHandler;
+import views.screen.home.HomeScreenHandler;
 import views.screen.card.CardScreenHandler;
 
 public class BikeInfoHandler extends BaseScreenHandler {
@@ -49,14 +52,21 @@ public class BikeInfoHandler extends BaseScreenHandler {
 	@FXML
 	private Button exitBtn;
 	
-	private BikeType bike;
+	private Bike bike;
 	
-	public BikeInfoHandler(Stage stage, String screenPath, BikeType bike) throws IOException {
+	public HomeController getBController() {
+		return (HomeController) super.getBController();
+	}
+	
+	public BikeInfoHandler(Stage stage, String screenPath, Bike bike, HomeScreenHandler home) throws IOException, SQLException {
 		super(stage, screenPath);
 		this.bike = bike;
 		
+		setBController(new HomeController());
+		
 		logo.setOnMouseClicked(e -> {
-			this.getPreviousScreen().show();
+//			this.getPreviousScreen().show();
+			homeScreenHandler.show();
 		});
 		
 		rentBtn.setOnMouseClicked(e -> {
@@ -64,7 +74,8 @@ public class BikeInfoHandler extends BaseScreenHandler {
 			CardScreenHandler cardScreen;
 			try {
 				LOGGER.info("User clicked rent button and navigated to the card screen.");
-				cardScreen = new CardScreenHandler(this.getPreviousScreen().getStage(), Configs.CARD_PATH);
+				cardScreen = new CardScreenHandler(this.getPreviousScreen().getStage(), Configs.CARD_PATH, bike, home);
+				cardScreen.setHomeScreenHandler(home);
 				cardScreen.requestToCardScreen(this);
 				
 			} catch (IOException e1) {
@@ -86,12 +97,12 @@ public class BikeInfoHandler extends BaseScreenHandler {
 //		
 //	}
 	
-	public void setBikeInfo() {
+	public void setBikeInfo() throws SQLException {
 		barcode.setText(this.bike.getBarcode());
 		type.setText(this.bike.getType());
 		feature.setText(this.bike.getPedals() + " pedal, " + this.bike.getSaddles() + " saddle, " + this.bike.getRearSeats() + " rear seat");
 		battery.setText(Integer.toString(this.bike.getBattery()));
-		dock.setText(Integer.toString(this.bike.getDockId()));
+		dock.setText(getBController().getDockById(this.bike.getDockId()).getName());
 		rentingFee.setText(Integer.toString(this.bike.getRentingFee()));
 		depositFee.setText(Integer.toString(this.bike.getDepositFee()));
 		

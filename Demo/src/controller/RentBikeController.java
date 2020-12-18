@@ -3,7 +3,7 @@ package controller;
 import java.sql.SQLException;
 import java.util.Arrays;
 
-import entity.bike.BikeType;
+import entity.bike.Bike;
 
 public class RentBikeController extends BaseController {
 	

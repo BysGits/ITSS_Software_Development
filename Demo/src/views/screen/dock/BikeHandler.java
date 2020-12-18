@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 
-import entity.bike.BikeType;
+import entity.bike.Bike;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -32,10 +32,10 @@ public class BikeHandler extends BaseScreenHandler {
 	@FXML
 	private Button rentBtn;
 	
-	private BikeType bike;
+	private Bike bike;
 	private DockScreenHandler home;
 	
-	public BikeHandler(String screenPath, BikeType bike, DockScreenHandler home) throws IOException, SQLException {
+	public BikeHandler(String screenPath, Bike bike, DockScreenHandler home, HomeScreenHandler homeScreenHadler) throws IOException, SQLException {
 		super(screenPath);
 		this.bike = bike;
 		this.home = home;
@@ -44,11 +44,12 @@ public class BikeHandler extends BaseScreenHandler {
 			BikeInfoHandler bikeInfoScreen;
 			try {
 				LOGGER.info("User clicked to view bike information");
-				Stage newStage = new Stage();
-				bikeInfoScreen = new BikeInfoHandler(home.getStage(), Configs.BIKE_INFO_PATH, bike);
+		
+				bikeInfoScreen = new BikeInfoHandler(home.getStage(), Configs.BIKE_INFO_PATH, bike, homeScreenHandler);
 				bikeInfoScreen.setDockScreenHandler(home);
+				bikeInfoScreen.setHomeScreenHandler(homeScreenHandler);
 				bikeInfoScreen.requestToViewBikeInfo(home);
-			} catch (IOException e1) {
+			} catch (SQLException | IOException e1) {
 				e1.printStackTrace();
 			}
 		});

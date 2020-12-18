@@ -3,10 +3,14 @@ package views.screen.home;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
+import entity.rent.Rent;
 
 import controller.HomeController;
 import javafx.fxml.FXML;
@@ -26,9 +30,10 @@ import utils.Configs;
 import utils.Utils;
 import controller.RentBikeController;
 import controller.ViewDockController;
-import entity.bike.BikeType;
+import entity.bike.Bike;
 import entity.dock.Dock;
 import views.screen.rentBike.RentBikeScreenHandler;
+
 
 public class HomeScreenHandler extends BaseScreenHandler implements Initializable {
 	
@@ -59,6 +64,20 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 	@FXML
 	private Button searchBtn;
 	
+	private Rent rent;
+	
+	public void setReturnBikeBtnAble() {
+		this.returnBikeBtn.setDisable(false);
+	}
+	
+	public void setViewBikeBtnAble() {
+		this.viewBikeBtn.setDisable(false);;
+	}
+	
+	
+	public void getRenting(Rent rent) {
+		this.rent = rent;
+	}
 	
 	private List homeItems;
 
@@ -67,13 +86,13 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 	}
 	
 	public Stage getStage() {
-		//System.out.println(this.stage.toString());
 		return this.stage;
 	}
 	
 	public HomeScreenHandler getHomeScreenHandler() {
 		return this;
 	}
+	
 	public HomeController getBController() {
 		return (HomeController) super.getBController();
 	}
@@ -88,7 +107,8 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 			int count = 0;
 			for (Object object : dockList) {
 				Dock dock = (Dock) object;
-				DockHandler d1 = new DockHandler(Configs.DOCK_HOME_PATH, dock, this);
+				DockHandler d1 = new DockHandler(this.stage, Configs.DOCK_HOME_PATH, dock, this);
+				d1.setHomeScreenHandler(this);
 				this.homeItems.add(d1);
 			}
 		} catch (SQLException | IOException e) {
@@ -96,17 +116,37 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 			e.printStackTrace();
 		}
 		
+		viewBikeBtn.setOnMouseClicked(e -> {
+			RentBikeScreenHandler rentBikeScreen;
+			
+			try {
+				LOGGER.info("User clicked to view renting bike's info and his/her renting");
+				
+				rentBikeScreen = new RentBikeScreenHandler(this.stage, Configs.VIEW_RENTING_BIKE_PATH, rent);
+				rentBikeScreen.setHomeScreenHandler(this);
+				rentBikeScreen.requestToRentBike(this);
+			} catch(IOException e1) {
+				e1.printStackTrace();
+			}
+		});
+		
+		returnBikeBtn.setOnMouseClicked(e -> {
+			
+//			rent.setRentingTime((rent.getEnd() - rent.getStart())
+//			rent.setCurrentFee((rent.getEnd() - rent.getStart());
+		});
+		
 		rentBikeBtn.setOnMouseClicked(e -> {
 
 			BikeInfoHandler bikeInfoScreen;
 			try {
-				BikeType bike = getBController().getBikeByBarcode(barcode.getText());
+				Bike bike = getBController().getBikeByBarcode(barcode.getText());
 				if (bike == null) {
 					System.out.println("This barcode does not exist");
 				} else {
 					LOGGER.info("User entered barcode and clicked rent bike");
 					
-					bikeInfoScreen = new BikeInfoHandler(this.stage, Configs.BIKE_INFO_PATH, bike);
+					bikeInfoScreen = new BikeInfoHandler(this.stage, Configs.BIKE_INFO_PATH, bike, this);
 					bikeInfoScreen.setHomeScreenHandler(this);
 					bikeInfoScreen.requestToViewBikeInfo(this);
 				}
@@ -128,7 +168,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 				int count = 0;
 				for (Object object : dockList) {
 					Dock dock = (Dock) object;
-					DockHandler d1 = new DockHandler(Configs.DOCK_HOME_PATH, dock, this);
+					DockHandler d1 = new DockHandler(this.stage, Configs.DOCK_HOME_PATH, dock, this);
 					this.homeItems.add(d1);
 				}
 			} catch (SQLException | IOException e1) {

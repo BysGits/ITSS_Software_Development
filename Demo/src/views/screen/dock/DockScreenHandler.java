@@ -9,7 +9,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
 import controller.HomeController;
-import entity.bike.BikeType;
+import entity.bike.Bike;
 import entity.dock.Dock;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -40,7 +40,7 @@ public class DockScreenHandler extends BaseScreenHandler {
 		return homeScreenHandler.getStage();
 	}
 	
-	public DockScreenHandler(Stage stage, String screenPath, Dock dock) throws IOException {
+	public DockScreenHandler(Stage stage, String screenPath, Dock dock, HomeScreenHandler home) throws IOException {
 		super(stage, screenPath);
 		this.dock = dock;
 		
@@ -53,8 +53,9 @@ public class DockScreenHandler extends BaseScreenHandler {
 			
 			for (Object object : bikeList) {
 				
-				BikeType bike = (BikeType) object;
-				BikeHandler b1 = new BikeHandler(Configs.DOCK_BIKE_PATH, bike, this);
+				Bike bike = (Bike) object;
+				BikeHandler b1 = new BikeHandler(Configs.DOCK_BIKE_PATH, bike, this, home);
+				b1.setHomeScreenHandler(home);
 				this.dockItems.add(b1);
 			}
 		} catch (SQLException | IOException e) {
