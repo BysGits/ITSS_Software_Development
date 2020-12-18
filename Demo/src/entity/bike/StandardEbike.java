@@ -2,7 +2,7 @@ package entity.bike;
 
 import java.sql.SQLException;
 
-public class StandardEbike extends BikeType {
+public class StandardEbike extends Bike {
 	
 	private int battery;
 	
