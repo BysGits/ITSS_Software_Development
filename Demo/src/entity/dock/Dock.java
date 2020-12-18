@@ -117,6 +117,19 @@ public class Dock {
 		
 	}
 	
+	public List<Dock> searchDock(String tmp) throws SQLException {
+		Statement stm = ECOBIKEDB.getConnection().createStatement();
+		String query = "SELECT * FROM DOCK WHERE name LIKE '%" + tmp + "%' OR address LIKE '%" + tmp + "%';";
+		ResultSet res = stm.executeQuery(query);
+		ArrayList<Dock> dockList = new ArrayList<Dock>();
+		
+		while (res.next()) {
+			Dock dock = createNewDockFromDB(res);
+			dockList.add(dock);
+		}
+		return dockList;
+	}
+	
 	public Dock addDock(int id, String name, String address, int availableBikes, int emptySlots ) throws SQLException {
 		Statement stm = ECOBIKEDB.getConnection().createStatement();
 		String query = "INSERT INTO TABLE DOCK(ID, NAME, ADDRESS, AREA, AVAILABLEBIKES, EMPTYSLOTS) VALUE("

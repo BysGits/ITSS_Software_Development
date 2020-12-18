@@ -5,12 +5,15 @@ import java.util.logging.Logger;
 
 import entity.bike.BikeType;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import utils.Configs;
 import utils.Utils;
 import views.screen.BaseScreenHandler;
 import views.screen.dock.DockScreenHandler;
+import views.screen.card.CardScreenHandler;
 
 public class BikeInfoHandler extends BaseScreenHandler {
 
@@ -40,6 +43,12 @@ public class BikeInfoHandler extends BaseScreenHandler {
 	@FXML
 	private ImageView logo;
 	
+	@FXML
+	private Button rentBtn;
+	
+	@FXML
+	private Button exitBtn;
+	
 	private BikeType bike;
 	
 	public BikeInfoHandler(Stage stage, String screenPath, BikeType bike) throws IOException {
@@ -47,7 +56,20 @@ public class BikeInfoHandler extends BaseScreenHandler {
 		this.bike = bike;
 		
 		logo.setOnMouseClicked(e -> {
-			dockScreenHandler.show();
+			this.getPreviousScreen().show();
+		});
+		
+		rentBtn.setOnMouseClicked(e -> {
+			
+			CardScreenHandler cardScreen;
+			try {
+				LOGGER.info("User clicked rent button and navigated to the card screen.");
+				cardScreen = new CardScreenHandler(this.getPreviousScreen().getStage(), Configs.CARD_PATH);
+				cardScreen.requestToCardScreen(this);
+				
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 		});
 		setBikeInfo();
 	}

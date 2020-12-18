@@ -13,7 +13,7 @@ public class HomeController extends BaseController {
 	 * @return List[Media]
 	 * @throws SQLException
 	 */
-	public List getAllDock() throws SQLException {
+	public List getAllDocks() throws SQLException {
 		return new Dock().getAllDocks();
 	}
 	
@@ -25,5 +25,20 @@ public class HomeController extends BaseController {
 	 */
 	public List getAllBikesByDockId(int dockId) throws SQLException {
 		return new BikeType().getBikeByDockId(dockId);
+	}
+	
+	/**
+	 * this method get bike with a specified dock and return back to the screen to display
+	 * @param barcode
+	 * @return
+	 * @throws SQLException
+	 */
+	
+	public BikeType getBikeByBarcode(String barcode) throws SQLException {
+		return new BikeType().getBikeByBarcode(barcode);
+	}
+	
+	public List<Dock> searchDock(String tmp) throws SQLException {
+		return new Dock().searchDock(tmp);
 	}
 }
