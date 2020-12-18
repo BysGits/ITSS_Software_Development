@@ -32,6 +32,7 @@ public class Bike {
 		this.id = id;
 	}
 	
+	
 	public Bike(int id, String type, String barcode, int pedals, int saddles, int rearSeats, int rentingFee, int depositFee, boolean state, int dockId, int battery) throws SQLException {
 		this.id = id;
 		this.type = type;
@@ -207,9 +208,11 @@ public class Bike {
 		} else {
 			return null;
 		}
-		
-		
-		
+	}
+	
+	public void empty() {
+		barcode = "";
+		id = 0;
 		
 	}
 }

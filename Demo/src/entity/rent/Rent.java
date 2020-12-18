@@ -19,8 +19,8 @@ public class Rent {
 	private int id;
 	private Bike bike;
 	private boolean type;
-	private double currentFee;
-	private double rentingTime;
+	private int currentFee;
+	private int rentingTime;
 	private double start;
 	private double end;
 	
@@ -80,7 +80,7 @@ public class Rent {
 		return this;
 	}
 
-	public double getCurrentFee() {
+	public int getCurrentFee() {
 		return currentFee;
 	}
 
@@ -89,7 +89,7 @@ public class Rent {
 		return this;
 	}
 
-	public double getRentTime() {
+	public int getRentTime() {
 		return rentingTime;
 	}
 
@@ -156,26 +156,51 @@ public class Rent {
 		stm.executeQuery(query);
 	}
 	
-//	public double calculateFee() {
-//		// Standard rent: 0
-//		// 24-hour rent: 1
-//		if (!type) {
-//			if (rentingTime < 10) {
-//				return 0;
-//			} else {
-//				currentFee = 10000;
-//				if (rentingTime > 30) {
-//					currentFee += ((rentingTime - 30)/15)*3000;
-//				}
-//				return currentFee;
-//			}
-//		} else {
-//			currentFee = 200000;
-//			if (rentingTime < 12*60) {
-//				currentFee = 200000 - (12 - rentingTime/60 + 1)
-//			}
-//		}
-//	}
+	public int calculateFee() {
+		// Standard rent: 0
+		// 24-hour rent: 1
+		int tmp = 0;
+		if (!type) {
+			if (rentingTime < 10) {
+				currentFee = 0;
+			} else {
+				currentFee = 10000;
+				if (rentingTime > 30) {
+					tmp = (rentingTime - 30)%15;
+					if (tmp == 0) {
+						currentFee += ((rentingTime - 30)/15)*3000;
+					} else {
+						currentFee += ((rentingTime - 30)/15 + 1)*3000;
+					}
+				}
+			}
+		} else {
+			currentFee = 200000;
+			if (rentingTime < 12*60) {
+				if (rentingTime % 60 == 0) {
+					currentFee = 200000 - (12 - rentingTime/60)*10000;
+				} else {
+					currentFee = 200000 - (12 - rentingTime/60 + 1)*10000;
+				}
+				
+			}
+			
+			if (rentingTime > 24*60) {
+				if ((rentingTime - 24*60)%15 == 0) {
+					currentFee += ((rentingTime - 24*60)/15)*2000;
+				} else {
+					currentFee += ((rentingTime - 24*60)/15 + 1)*2000;
+				}
+			}
+		}
+		
+		return currentFee;
+	}
+	
+	public void empty() {
+		rentingTime = 0;
+		currentFee = 0;
+	}
 	
 	
 	

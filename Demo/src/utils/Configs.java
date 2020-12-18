@@ -41,4 +41,5 @@ public class Configs {
 
 	public static String CURRENCY = "VND";
 	public static float PERCENT_VAT = 10;
+	public static final String INVOICE_PATH = "/views/fxml/invoice.fxml";
 }
