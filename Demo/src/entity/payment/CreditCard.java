@@ -67,14 +67,14 @@ public class CreditCard {
 	
 	public CreditCard getCreditCard(String cardCode) throws SQLException {
 		Statement stm = ECOBIKEDB.getConnection().createStatement();
-		String query = "SELECT * FROM ECOBIKE.CARD WHERE CARDCODE = " + cardCode + ";";
+		String query = "SELECT * FROM ECOBIKE.CARD WHERE CARDCODE LIKE '" + cardCode + "';";
 		
 		ResultSet res = stm.executeQuery(query);
 		
 		if (res.next()) {
 			return new CreditCard()
 					.setCardCode(res.getString("cardCode"))
-					.setCvvCode(res.getInt("cvv"))
+					.setCvvCode(res.getInt("cvvCode"))
 					.setOwner(res.getString("owner"))
 					.setDateExpired(res.getString("dateExpired"));
 			

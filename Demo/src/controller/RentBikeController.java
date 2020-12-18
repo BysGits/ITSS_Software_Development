@@ -83,24 +83,22 @@ public class RentBikeController extends BaseController {
 		return interbankSubsystem.payOrder(card, depositFee, content);
 	}
 	
-	public int checkCreditCard (String cardCode, String owner, int cvv, String dateExpired ) throws SQLException{
+	public int checkCreditCardInfo (String cardCode, String owner, int cvv, String dateExpired ) throws SQLException{
 		CreditCard card = new CreditCard().getCreditCard(cardCode);
 		
 		if(card == null) {
 			return 1;
 		}else {
-			if(card.getOwner() != owner) {
+			if(!card.getOwner().equals(owner)) {
 				return 2;
 			}else if (card.getCvvCode() != cvv) {
 				return 3;
-			}else if (card.getDateExpired() != dateExpired) {
+			}else if (!card.getDateExpired().equals(dateExpired)) {
 				return 4;
 			}else {
 				return 0;
 			}
 		}
 	}
-	
-	public 
 	
 }
