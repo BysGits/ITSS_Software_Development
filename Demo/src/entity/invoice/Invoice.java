@@ -18,10 +18,6 @@ public class Invoice {
 	private Rent rent;
 	private int totalAmount;
 	
-	public Invoice() {
-		
-	}
-	
 	public int getId() {
 		return id;
 	}

@@ -13,4 +13,5 @@ public class Configs {
 	public static final String DOCK_BIKE_PATH = "/views/fxml/dock_bike.fxml";
 	public static final String BIKE_INFO_PATH = "/views/fxml/bike_info.fxml";
 	public static final String VIEW_RENTING_BIKE_PATH = "/views/fxml/view_renting_bike.fxml";
+	public static final String INVOICE_PATH = "/views/fxml/invoice.fxml";
 }

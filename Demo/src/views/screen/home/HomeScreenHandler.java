@@ -26,6 +26,7 @@ import javafx.stage.Stage;
 import views.screen.BaseScreenHandler;
 import views.screen.bike.BikeInfoHandler;
 import views.screen.dock.DockScreenHandler;
+import views.screen.invoice.InvoiceScreenHandler;
 import utils.Configs;
 import utils.Utils;
 import controller.RentBikeController;
@@ -66,14 +67,18 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 	
 	private Rent rent;
 	
-	public void setReturnBikeBtnAble() {
-		this.returnBikeBtn.setDisable(false);
+
+	public Button getViewBikeBtn() {
+		return this.viewBikeBtn;
 	}
 	
-	public void setViewBikeBtnAble() {
-		this.viewBikeBtn.setDisable(false);;
+	public Button getReturnBikeBtn() {
+		return this.returnBikeBtn;
 	}
 	
+	public Button getRentBikeBtn() {
+		return this.rentBikeBtn;
+	}
 	
 	public void getRenting(Rent rent) {
 		this.rent = rent;
@@ -131,9 +136,24 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 		});
 		
 		returnBikeBtn.setOnMouseClicked(e -> {
+//			rent.setCurrentFee(0);
+//			rent.setRentTime(0);
+//			rent.setStart();
+//			rent.setEnd();
+//			
+//			returnBikeBtn.setDisable(true);
+//			viewBikeBtn.setDisable(true);
+//			rentBikeBtn.setDisable(false);
+			InvoiceScreenHandler invoiceScreen;
 			
-//			rent.setRentingTime((rent.getEnd() - rent.getStart())
-//			rent.setCurrentFee((rent.getEnd() - rent.getStart());
+			try {
+				invoiceScreen = new InvoiceScreenHandler(this.stage, Configs.INVOICE_PATH, rent);
+				invoiceScreen.setHomeScreenHandler(this);
+				invoiceScreen.requestToViewInvoice(this);
+				
+			} catch (SQLException | IOException e1) {
+				e1.printStackTrace();
+			}
 		});
 		
 		rentBikeBtn.setOnMouseClicked(e -> {

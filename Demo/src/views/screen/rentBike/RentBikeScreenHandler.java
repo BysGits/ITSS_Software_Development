@@ -86,15 +86,17 @@ public class RentBikeScreenHandler extends BaseScreenHandler {
 	
 	public void setRentInfo() {
 		Bike bike = this.rent.getBike();
-		double rentingTime = (System.currentTimeMillis() - this.rent.getStart());
-//		double currentFee = 
+		this.rent.setRentTime((int) (System.currentTimeMillis() - this.rent.getStart())/1000);
+		System.out.println(this.rent.getStart());
+		System.out.println(System.currentTimeMillis());
+		
+
 		barcode.setText(bike.getBarcode());
 		type.setText(bike.getType());
 		feature.setText(bike.getPedals() + " pedal, " + bike.getSaddles() + " saddle, " + bike.getRearSeats() + " rear seat");
 		battery.setText(Integer.toString(bike.getBattery()));
-		//dock.setText(getBController().getDockById(this.bike.getDockId()).getName());
-		fee.setText(Double.toString((rentingTime/60)*bike.getRentingFee()));
-//		depositFee.setText(Integer.toString(this.bike.getDepositFee()));
-		time.setText(Double.toString((System.nanoTime() - this.rent.getStart())/1000000000));
+		
+		fee.setText(Double.toString(rent.calculateFee()));
+		time.setText(Integer.toString(this.rent.getRentTime()));
 	}
 }

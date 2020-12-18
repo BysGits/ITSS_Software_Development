@@ -41,16 +41,18 @@ public class CardScreenHandler extends BaseScreenHandler {
 		// When click confirm button:
 		// - Check the card's information
 		// - Create new Rent object
-		// - Enable the ViewBike button and ReturnBike button in homepage
+		// - Enable the ViewBike button and ReturnBike button in home page
 		confirmBtn.setOnMouseClicked(e -> {
 			try {
 				// Create new rent
 				Rent rent = getBController().newRent(bike);
-				
+				System.out.println(System.currentTimeMillis());
+				// Enable the ViewBike button and ReturnBike button in home page
 				home.getRenting(rent);
 				home.show();
-				home.setReturnBikeBtnAble();
-				home.setViewBikeBtnAble();
+				home.getReturnBikeBtn().setDisable(false);
+				home.getViewBikeBtn().setDisable(false);
+				home.getRentBikeBtn().setDisable(true);
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
