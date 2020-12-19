@@ -9,7 +9,11 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+<<<<<<< HEAD
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JDBCDriver"/>
+=======
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JDBC"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX 14.0.1"/>
+>>>>>>> 33dd758c729566c1543fc180a4a95ca5cde78f2a
 	<classpathentry kind="output" path="bin"/>
 </classpath>

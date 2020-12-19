@@ -1,0 +1,9 @@
+.scroll-pane .scroll-bar:vertical {
+-fx-unit-increment: 15 ;
+-fx-block-increment: 15 ;
+}
+
+.scroll-pane .scroll-bar:horizontal {
+-fx-unit-increment: 15 ;
+-fx-block-increment: 15 ;
+}
