@@ -56,41 +56,59 @@ public class CardScreenHandler extends BaseScreenHandler {
 		// - Check the card's information
 		// - Create new Rent object
 		// - Enable the ViewBike button and ReturnBike button in home page
+//		confirmBtn.setOnMouseClicked(e -> {
+//			try {
+//				
+//				RentBikeController tempController = new RentBikeController();
+//				switch(tempController.checkCreditCardInfo(cardCode.getText(), owner.getText(), Integer.parseInt(cvvCode.getText()), dateExpired.getText())) {
+//					case 1:
+//						System.out.println("Invalid card code");
+//						break;
+//					case 2:
+//						//System.out.println(owner.g);
+//						
+//						System.out.println("Invalid owner");
+//						break;
+//					case 3:
+//						System.out.println("Invalid card cvv");
+//						break;
+//					case 4:
+//						System.out.println("Invalid date expired");
+//						break;
+//					default:
+//						// Create new rent
+//						System.out.println("OK!");
+//						Rent rent = getBController().newRent(bike);
+//						System.out.println(System.currentTimeMillis());
+//						// Enable the ViewBike button and ReturnBike button in home page
+//						home.getRenting(rent);
+//						home.show();
+//						home.getReturnBikeBtn().setDisable(false);
+//						home.getViewBikeBtn().setDisable(false);
+//						home.getRentBikeBtn().setDisable(true);
+//						
+//				}
+//			} catch (SQLException e1) {
+//				e1.printStackTrace();
+//			}
+//		});
+		
 		confirmBtn.setOnMouseClicked(e -> {
+			Rent rent;
 			try {
-				
-				RentBikeController tempController = new RentBikeController();
-				switch(tempController.checkCreditCardInfo(cardCode.getText(), owner.getText(), Integer.parseInt(cvvCode.getText()), dateExpired.getText())) {
-					case 1:
-						System.out.println("Invalid card code");
-						break;
-					case 2:
-						//System.out.println(owner.g);
-						
-						System.out.println("Invalid owner");
-						break;
-					case 3:
-						System.out.println("Invalid card cvv");
-						break;
-					case 4:
-						System.out.println("Invalid date expired");
-						break;
-					default:
-						// Create new rent
-						System.out.println("OK!");
-						Rent rent = getBController().newRent(bike);
-						System.out.println(System.currentTimeMillis());
-						// Enable the ViewBike button and ReturnBike button in home page
-						home.getRenting(rent);
-						home.show();
-						home.getReturnBikeBtn().setDisable(false);
-						home.getViewBikeBtn().setDisable(false);
-						home.getRentBikeBtn().setDisable(true);
-						
-				}
+				rent = getBController().newRent(bike);
+				System.out.println(System.currentTimeMillis());
+				// Enable the ViewBike button and ReturnBike button in home page
+				home.getRenting(rent);
+				home.show();
+				home.getReturnBikeBtn().setDisable(false);
+				home.getViewBikeBtn().setDisable(false);
+				home.getRentBikeBtn().setDisable(true);
 			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			
 		});
 	}
 	

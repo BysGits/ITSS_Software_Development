@@ -67,4 +67,7 @@ public class HomeController extends BaseController {
 		rent.empty();
 	}
 	
+	public void createInvoice(Rent rent) throws SQLException {
+		
+	}
 }

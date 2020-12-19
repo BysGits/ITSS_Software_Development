@@ -50,7 +50,7 @@ public class Invoice {
 		return this;
 	}
 
-	public void saveInvoice() {
+	public void saveInvoice(Rent rent, int totalAmount) {
 		
 	}
 
@@ -90,13 +90,12 @@ public class Invoice {
 //		return invoiceList;
 //	}
 //	
-	public Invoice addInvoice (int id, Rent rent, int totalAmount) throws SQLException{
+	public void addInvoice (Rent rent, int totalAmount) throws SQLException{
 		Statement stm = ECOBIKEDB.getConnection().createStatement();
-		String query = "INSERT INTO TABLE ECOBIKE.INVOICE(ID, RENTID, TOTALAMOUNT) VALUE (" 
-						+ id + "," + rent.getId() + "," + totalAmount + ";";
+		String query = "INSERT INTO  INVOICE(RENTID, TOTALAMOUNT) VALUE (" 
+						 + rent.getId() + "," + totalAmount + ";";
 		stm.executeQuery(query);
-		
-		return new Invoice(id, rent, totalAmount);
+		//return new Invoice(id, rent, totalAmount);
 	}
 	
 	public void updateInvoiceFieldById(String tbname, int id, String field, Object value) throws SQLException{

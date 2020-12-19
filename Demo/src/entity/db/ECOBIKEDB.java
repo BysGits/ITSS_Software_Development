@@ -16,7 +16,7 @@ public class ECOBIKEDB {
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			String URL = "jdbc:mysql://localhost:3306/ecobike";
+			String URL = "jdbc:mysql://localhost:3306/mydb";
 			String USER = "root";
 			String PASSWORD = "120914";
 			if (connect == null) {

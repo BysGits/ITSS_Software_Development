@@ -13,6 +13,8 @@ public class Configs {
 	public static final String DOCK_BIKE_PATH = "/views/fxml/dock_bike.fxml";
 	public static final String BIKE_INFO_PATH = "/views/fxml/bike_info.fxml";
 	public static final String VIEW_RENTING_BIKE_PATH = "/views/fxml/view_renting_bike.fxml";
+	public static final String HISTORY_PATH = "/views/fxml/history.fxml";
+	public static final String RETURN_POPUP_PATH = "/views/fxml/return_popup.fxml";
 	
 	public static final String GET_BALANCE_URL = "https://ecopark-system-api.herokuapp.com/api/card/balance/118609_group1_2020";
 	public static final String GET_VEHICLECODE_URL = "https://ecopark-system-api.herokuapp.com/api/get-vehicle-code/1rjdfasdfas";
