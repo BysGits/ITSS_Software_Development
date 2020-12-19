@@ -23,6 +23,7 @@ public class Rent {
 	private int rentingTime;
 	private double start;
 	private double end;
+	private int pauseTime;
 	
 	
 	public Rent() throws SQLException {
@@ -200,6 +201,14 @@ public class Rent {
 	public void empty() {
 		rentingTime = 0;
 		currentFee = 0;
+	}
+
+	public int getPauseTime() {
+		return pauseTime;
+	}
+
+	public void setPauseTime(int pauseTime) {
+		this.pauseTime = pauseTime;
 	}
 	
 	
