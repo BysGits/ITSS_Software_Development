@@ -26,7 +26,9 @@ import javafx.stage.Stage;
 import views.screen.BaseScreenHandler;
 import views.screen.bike.BikeInfoHandler;
 import views.screen.dock.DockScreenHandler;
+import views.screen.history.HistoryScreenHandler;
 import views.screen.invoice.InvoiceScreenHandler;
+import views.screen.popup.ReturnPopUpHandler;
 import utils.Configs;
 import utils.Utils;
 import controller.RentBikeController;
@@ -64,6 +66,9 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 	
 	@FXML
 	private Button searchBtn;
+	
+	@FXML
+	private Button historyBtn;
 	
 	private Rent rent;
 	
@@ -136,24 +141,27 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 		});
 		
 		returnBikeBtn.setOnMouseClicked(e -> {
-//			rent.setCurrentFee(0);
-//			rent.setRentTime(0);
-//			rent.setStart();
-//			rent.setEnd();
+//			InvoiceScreenHandler invoiceScreen;
 //			
-//			returnBikeBtn.setDisable(true);
-//			viewBikeBtn.setDisable(true);
-//			rentBikeBtn.setDisable(false);
-			InvoiceScreenHandler invoiceScreen;
+//			try {
+//				invoiceScreen = new InvoiceScreenHandler(this.stage, Configs.INVOICE_PATH, rent);
+//				invoiceScreen.setHomeScreenHandler(this);
+//				invoiceScreen.requestToViewInvoice(this);
+//				
+//			} catch (SQLException | IOException e1) {
+//				e1.printStackTrace();
+//			}
+			ReturnPopUpHandler returnPopUp;
 			
 			try {
-				invoiceScreen = new InvoiceScreenHandler(this.stage, Configs.INVOICE_PATH, rent);
-				invoiceScreen.setHomeScreenHandler(this);
-				invoiceScreen.requestToViewInvoice(this);
-				
+				returnPopUp = new ReturnPopUpHandler(new Stage(), Configs.RETURN_POPUP_PATH, rent);
+				returnPopUp.setHomeScreenHandler(this);
+				returnPopUp.requestToPopUpReturnBike(this);
 			} catch (SQLException | IOException e1) {
+				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			
 		});
 		
 		rentBikeBtn.setOnMouseClicked(e -> {
@@ -197,6 +205,19 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 			}
 			addDockHome(this.homeItems);
 		});
+		
+		historyBtn.setOnMouseClicked(e -> {
+			HistoryScreenHandler historyScreen;
+			
+			try {
+				historyScreen = new HistoryScreenHandler(this.stage, Configs.HISTORY_PATH);
+				historyScreen.setHomeScreenHandler(this);
+				historyScreen.requestToViewHistory(this);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		});
+		
 		addDockHome(this.homeItems);
 	}
 	
