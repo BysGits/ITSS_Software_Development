@@ -103,6 +103,17 @@ public class Dock {
 		}
 		
 	}
+	
+	public static Dock getDockByName(String name) throws SQLException {
+		String sql = "SELECT * FROM DOCK WHERE name LIKE '" + name + "';";
+		Statement stm = ECOBIKEDB.getConnection().createStatement();
+		ResultSet res = stm.executeQuery(sql);
+		if (res.next()) {
+			return createNewDockFromDB(res);
+		} 
+		return null;
+	}
+	
 	public List<Dock> getAllDocks() throws SQLException {
 		
 		Statement stm = ECOBIKEDB.getConnection().createStatement();

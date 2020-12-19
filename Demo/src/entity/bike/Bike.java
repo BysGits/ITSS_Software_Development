@@ -133,7 +133,10 @@ public class Bike {
 		return dockId;
 	}
 	
-	public Bike setDockId(int dockId) {
+	public Bike setDockId(int dockId) throws SQLException {
+		Statement stm = ECOBIKEDB.getConnection().createStatement();
+		String query = "INSERT INTO bike(dockId) VALUE(" + dockId + ");";
+		stm.executeQuery(query);
 		this.dockId = dockId;
 		return this;
 	}
