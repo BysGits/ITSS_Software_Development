@@ -101,6 +101,7 @@ public class CardScreenHandler extends BaseScreenHandler {
 				// Enable the ViewBike button and ReturnBike button in home page
 				home.getRenting(rent);
 				home.show();
+				home.loadAllDocks();
 				home.getReturnBikeBtn().setDisable(false);
 				home.getViewBikeBtn().setDisable(false);
 				home.getRentBikeBtn().setDisable(true);

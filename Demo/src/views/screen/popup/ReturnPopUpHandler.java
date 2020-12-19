@@ -60,7 +60,11 @@ public class ReturnPopUpHandler extends BaseScreenHandler {
 		
 		confirmBtn.setOnMouseClicked(e -> {
 			try {
+				System.out.println(rent.getBike().getDockId());
 				getBController().returnBike(rent, dockChoice.getSelectionModel().getSelectedItem());
+				System.out.println(dockChoice.getSelectionModel().getSelectedItem());
+				System.out.println(rent.getBike().getDockId());
+				homeScreenHandler.loadAllDocks();
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

@@ -64,7 +64,9 @@ public class HomeController extends BaseController {
 	}
 	
 	public void returnBike(Rent rent, String name) throws SQLException {
-		rent.getBike().setDockId(Dock.getDockByName(name).getId());
+		Dock dock = Dock.getDockByName(name);
+		System.out.println("ChECK");
+		rent.getBike().setNewDock(dock.getId());
 	}
 	
 	public void createInvoice(Rent rent) throws SQLException {

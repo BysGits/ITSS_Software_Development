@@ -111,20 +111,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setBController(new HomeController());
 		
-		try {
-			List dockList = getBController().getAllDocks();
-			this.homeItems = new ArrayList<>();
-			int count = 0;
-			for (Object object : dockList) {
-				Dock dock = (Dock) object;
-				DockHandler d1 = new DockHandler(this.stage, Configs.DOCK_HOME_PATH, dock, this);
-				d1.setHomeScreenHandler(this);
-				this.homeItems.add(d1);
-			}
-		} catch (SQLException | IOException e) {
-			LOGGER.info("Errors occured: " + e.getMessage());
-			e.printStackTrace();
-		}
+		loadAllDocks();
 		
 		viewBikeBtn.setOnMouseClicked(e -> {
 			RentBikeScreenHandler rentBikeScreen;
@@ -234,6 +221,23 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 			flowPaneDock.getChildren().add(dock.getContent());
 			dockList.remove(dock);
 		}	
+	}
+	
+	public void loadAllDocks() {
+		try {
+			List dockList = getBController().getAllDocks();
+			this.homeItems = new ArrayList<>();
+			int count = 0;
+			for (Object object : dockList) {
+				Dock dock = (Dock) object;
+				DockHandler d1 = new DockHandler(this.stage, Configs.DOCK_HOME_PATH, dock, this);
+				d1.setHomeScreenHandler(this);
+				this.homeItems.add(d1);
+			}
+		} catch (SQLException | IOException e) {
+			LOGGER.info("Errors occured: " + e.getMessage());
+			e.printStackTrace();
+		}
 	}
 
 }

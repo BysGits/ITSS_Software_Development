@@ -134,9 +134,6 @@ public class Bike {
 	}
 	
 	public Bike setDockId(int dockId) throws SQLException {
-		Statement stm = ECOBIKEDB.getConnection().createStatement();
-		String query = "INSERT INTO bike(dockId) VALUE(" + dockId + ");";
-		stm.executeQuery(query);
 		this.dockId = dockId;
 		return this;
 	}
@@ -160,6 +157,13 @@ public class Bike {
 		
 		return new Bike(tmpId, tmpType, tmpBarcode, tmpPedals, tmpSaddles, tmpRearSeats, tmpRentingFee, tmpDepositFee, tmpState, tmpDockId, tmpBattery);
 	}
+	
+	public void setNewDock(int dockId) throws SQLException {
+		Statement stm = ECOBIKEDB.getConnection().createStatement();
+		String query = "UPDATE bike SET dockId = " + dockId + " WHERE barcode LIKE 'ST001';";
+		stm.executeUpdate(query);
+	}
+	
 //	
 //	public BikeType getBikeById(int id) throws SQLException{
 //		Statement stm = ECOBIKEDB.getConnection().createStatement();
