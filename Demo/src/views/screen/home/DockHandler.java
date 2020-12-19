@@ -49,8 +49,8 @@ public class DockHandler extends BaseScreenHandler {
 //		return home.getStage();
 //	}
 	
-	public DockHandler(String screenPath, Dock dock, HomeScreenHandler home) throws IOException, SQLException{
-		super(screenPath);
+	public DockHandler(Stage stage, String screenPath, Dock dock, HomeScreenHandler home) throws IOException, SQLException{
+		super(stage, screenPath);
 		this.dock = dock;
 		this.home = home;
 		
@@ -61,7 +61,7 @@ public class DockHandler extends BaseScreenHandler {
 			DockScreenHandler dockScreen;
 			try {
 				LOGGER.info("User clicked to view dock.");
-				dockScreen = new DockScreenHandler(home.getStage(), Configs.DOCK_PATH, dock);
+				dockScreen = new DockScreenHandler(home.getStage(), Configs.DOCK_PATH, dock, home);
 				dockScreen.setHomeScreenHandler(home);
 				//System.out.println(dock.getId());
 				dockScreen.requestToViewDock(home);

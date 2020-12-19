@@ -83,7 +83,7 @@ public class Dock {
 		return this;
 	}
 
-	public Dock createNewDockFromDB (ResultSet res) throws SQLException {
+	public static Dock createNewDockFromDB (ResultSet res) throws SQLException {
 		return new Dock()
 				.setId(res.getInt("id"))
 				.setName(res.getString("name"))
@@ -91,7 +91,7 @@ public class Dock {
 				.setAvailableBikes(res.getInt("availableBikes"));
 	}
 	
-	public Dock getDockById(int id) throws SQLException {
+	public static Dock getDockById(int id) throws SQLException {
 		String sql = "SELECT * FROM DOCK WHERE ID = " + id + ";";
 		Statement stm = ECOBIKEDB.getConnection().createStatement();
 		ResultSet res = stm.executeQuery(sql);
@@ -103,6 +103,17 @@ public class Dock {
 		}
 		
 	}
+	
+	public static Dock getDockByName(String name) throws SQLException {
+		String sql = "SELECT * FROM DOCK WHERE name LIKE '" + name + "';";
+		Statement stm = ECOBIKEDB.getConnection().createStatement();
+		ResultSet res = stm.executeQuery(sql);
+		if (res.next()) {
+			return createNewDockFromDB(res);
+		} 
+		return null;
+	}
+	
 	public List<Dock> getAllDocks() throws SQLException {
 		
 		Statement stm = ECOBIKEDB.getConnection().createStatement();

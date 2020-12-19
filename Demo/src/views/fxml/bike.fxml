@@ -21,25 +21,24 @@
                   <Image url="@../../../assets/images/logo.png" />
                </image>
             </ImageView>
-            <Label layoutX="159.0" layoutY="58.0" text="DOCK INFORMATION" textFill="#1cb917">
+            <Label layoutX="165.0" layoutY="47.0" text="DOCK INFORMATION" textFill="#a1cf51">
                <font>
-                  <Font name="System Bold" size="24.0" />
+                  <Font name="Calibri" size="48.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <ScrollPane layoutX="500.0" layoutY="150.0" prefHeight="568.0" prefWidth="833.0">
+      <ScrollPane layoutX="432.0" layoutY="152.0" prefHeight="520.0" prefWidth="875.0">
          <content>
-            <FlowPane fx:id="flowPaneBike" prefHeight="568.0" prefWidth="833.0" />
+            <FlowPane fx:id="flowPaneBike" prefHeight="520.0" prefWidth="875.0" />
          </content>
       </ScrollPane>
-      <Button layoutX="1165.0" layoutY="715.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="124.0" text="Exit" />
-      <AnchorPane layoutY="150.0" prefHeight="518.0" prefWidth="550.0">
+      <AnchorPane layoutY="150.0" prefHeight="518.0" prefWidth="431.0">
          <children>
-            <GridPane layoutX="51.0" layoutY="88.0" prefHeight="518.0" prefWidth="499.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="51.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <GridPane layoutX="18.0" layoutY="88.0" prefHeight="518.0" prefWidth="413.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="270.0" minWidth="10.0" prefWidth="149.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="402.0" minWidth="10.0" prefWidth="350.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="270.0" minWidth="10.0" prefWidth="134.00001220703126" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="402.0" minWidth="10.0" prefWidth="279.59998779296876" />
               </columnConstraints>
               <rowConstraints>
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -72,5 +71,6 @@
             </GridPane>
          </children>
       </AnchorPane>
+      <Button layoutX="1159.0" layoutY="698.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="124.0" text="Exit" />
    </children>
 </AnchorPane>

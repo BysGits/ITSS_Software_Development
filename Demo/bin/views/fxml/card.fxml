@@ -63,7 +63,7 @@
                   <TextField fx:id="dateExpired" layoutX="176.0" layoutY="209.0" prefHeight="50.0" prefWidth="500.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
             </GridPane>
-            <Button layoutX="475.0" layoutY="509.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Confirm" />
+            <Button fx:id="confirmBtn" layoutX="475.0" layoutY="509.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Confirm" />
             <Button layoutX="701.0" layoutY="509.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Cancel" />
          </children>
       </AnchorPane>
