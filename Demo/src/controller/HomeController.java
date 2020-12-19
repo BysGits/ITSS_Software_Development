@@ -63,8 +63,8 @@ public class HomeController extends BaseController {
 		return new Rent(bike);
 	}
 	
-	public void returnBike(Rent rent) throws SQLException {
-		rent.empty();
+	public void returnBike(Rent rent, String name) throws SQLException {
+		rent.getBike().setDockId(Dock.getDockByName(name).getId());
 	}
 	
 	public void createInvoice(Rent rent) throws SQLException {
