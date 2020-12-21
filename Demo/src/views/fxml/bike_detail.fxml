@@ -126,12 +126,12 @@
             <DropShadow />
          </effect>
       </HBox>
-      <Button layoutX="844.0" layoutY="624.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="158.0" style="-fx-background-color: #e38568; -fx-background-radius: 7em;" text="R e n t">
+      <Button fx:id="rentBtn" layoutX="844.0" layoutY="624.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="158.0" style="-fx-background-color: #e38568; -fx-background-radius: 7em;" text="R e n t">
          <effect>
             <DropShadow />
          </effect>
       </Button>
-      <Button layoutX="1057.0" layoutY="624.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="158.0" style="-fx-background-color: #e38568; -fx-background-radius: 7em;" text="E x i t">
+      <Button fx:id="exitBtn" layoutX="1057.0" layoutY="624.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="158.0" style="-fx-background-color: #e38568; -fx-background-radius: 7em;" text="E x i t">
          <effect>
             <DropShadow />
          </effect>

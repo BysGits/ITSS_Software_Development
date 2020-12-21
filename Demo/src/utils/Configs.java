@@ -6,15 +6,15 @@ public class Configs {
 	// static resource
 	public static final String HOME_PATH = "/views/fxml/home_1.fxml";
 	public static final String SPLASH_SCREEN_PATH = "/views/fxml/splash.fxml";
-	public static final String RENT_BIKE_PATH = "/views/fxml/rent_bike.fxml";
 	public static final String CARD_PATH = "/views/fxml/card_1.fxml";
-	public static final String DOCK_HOME_PATH = "/views/fxml/dock_home_2.fxml";
-	public static final String DOCK_PATH = "/views/fxml/bike.fxml";
-	public static final String DOCK_BIKE_PATH = "/views/fxml/dock_bike.fxml";
-	public static final String BIKE_INFO_PATH = "/views/fxml/bike_info.fxml";
+	public static final String DOCK_HOME_PATH = "/views/fxml/dock_item.fxml";
+	public static final String DOCK_PATH = "/views/fxml/dock_detail.fxml";
+	public static final String DOCK_BIKE_PATH = "/views/fxml/dock_bike_1.fxml";
+	public static final String BIKE_INFO_PATH = "/views/fxml/bike_detail.fxml";
 	public static final String VIEW_RENTING_BIKE_PATH = "/views/fxml/view_renting_bike.fxml";
-	public static final String HISTORY_PATH = "/views/fxml/history.fxml";
+	public static final String HISTORY_PATH = "/views/fxml/history_1.fxml";
 	public static final String RETURN_POPUP_PATH = "/views/fxml/return_popup.fxml";
+	public static final String HISTORY_ITEM_PATH = "/views/fxml/history_item.fxml";
 	
 	public static final String GET_BALANCE_URL = "https://ecopark-system-api.herokuapp.com/api/card/balance/118609_group1_2020";
 	public static final String GET_VEHICLECODE_URL = "https://ecopark-system-api.herokuapp.com/api/get-vehicle-code/1rjdfasdfas";

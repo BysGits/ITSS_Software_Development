@@ -160,7 +160,7 @@ public class Bike {
 	
 	public void setNewDock(int dockId) throws SQLException {
 		Statement stm = ECOBIKEDB.getConnection().createStatement();
-		String query = "UPDATE bike SET dockId = " + dockId + " WHERE barcode LIKE 'ST001';";
+		String query = "UPDATE bike SET dockId = " + dockId + " WHERE id = " + this.id + ";";
 		stm.executeUpdate(query);
 	}
 	
@@ -215,11 +215,5 @@ public class Bike {
 		} else {
 			return null;
 		}
-	}
-	
-	public void empty() {
-		barcode = "";
-		id = 0;
-		
 	}
 }

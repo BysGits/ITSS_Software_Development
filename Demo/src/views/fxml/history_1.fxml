@@ -65,9 +65,9 @@
                   <DropShadow />
                </effect>
             </Rectangle>
-            <Button layoutX="221.0" layoutY="680.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="57.0" style="-fx-background-color: transparent;">
+            <Button fx:id="homeBtn" layoutX="221.0" layoutY="680.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="57.0" style="-fx-background-color: transparent;">
                <graphic>
-                  <ImageView fx:id="homeBtn" fitHeight="46.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="46.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../assets/images/home.png" />
                      </image>

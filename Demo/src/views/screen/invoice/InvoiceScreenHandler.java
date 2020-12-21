@@ -74,13 +74,6 @@ public class InvoiceScreenHandler extends BaseScreenHandler{
 		
 		
 	}
-
-	public void requestToViewInvoice(BaseScreenHandler prevScreen) {
-		setPreviousScreen(prevScreen);
-		setScreenTitle("Invoice Screen");
-		
-		show();
-	}
 	
 	public void setInvoiceInfo() throws SQLException {
 		barcode.setText(rent.getBike().getBarcode());

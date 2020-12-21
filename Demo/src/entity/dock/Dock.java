@@ -25,7 +25,6 @@ public class Dock {
 	
 	
 	public Dock() throws SQLException {
-		stm = ECOBIKEDB.getConnection().createStatement();
 	}
 	
 	public Dock(int id, String name, String address, int availableBikes, int emptySlots) throws SQLException {
@@ -88,7 +87,8 @@ public class Dock {
 				.setId(res.getInt("id"))
 				.setName(res.getString("name"))
 				.setAddress(res.getString("address"))
-				.setAvailableBikes(res.getInt("availableBikes"));
+				.setAvailableBikes(res.getInt("availableBikes"))
+				.setEmptySlots(res.getInt("emptySlots"));
 	}
 	
 	public static Dock getDockById(int id) throws SQLException {
@@ -117,7 +117,7 @@ public class Dock {
 	public List<Dock> getAllDocks() throws SQLException {
 		
 		Statement stm = ECOBIKEDB.getConnection().createStatement();
-		ResultSet res = stm.executeQuery("SELECT * FROM DOCK");
+		ResultSet res = stm.executeQuery("SELECT * FROM DOCK WHERE id != 99");
 		ArrayList<Dock> dockList = new ArrayList<Dock>();
 		
 		while (res.next()) {
@@ -167,9 +167,17 @@ public class Dock {
 		stm.executeQuery(query);
 	}
 
-	public Bike getBike() {
-		// TODO Auto-generated method stub
-		return null;
+	public void rentBike() throws SQLException {
+		Statement stm = ECOBIKEDB.getConnection().createStatement();
+		String query = "UPDATE dock SET availableBikes = " + (this.availableBikes - 1 ) + ", emptySlots = " + (this.emptySlots + 1) + " WHERE id = " + this.id + ";";
+		stm.executeUpdate(query);
 	}
 	
+	public void returnBike(int id) throws SQLException {
+		Statement stm = ECOBIKEDB.getConnection().createStatement();
+		Dock endDock = getDockById(id);
+		String query = "UPDATE dock SET availableBikes = " + (endDock.getAvailableBikes() + 1) + ", emptySlots = " + (endDock.getEmptySlots() - 1) + " WHERE id = " + id + ";";
+		System.out.println(this.availableBikes);
+		stm.executeUpdate(query);
+	}
 }

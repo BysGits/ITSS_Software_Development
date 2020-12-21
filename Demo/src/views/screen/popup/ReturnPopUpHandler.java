@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import views.screen.BaseScreenHandler;
 
@@ -36,6 +37,9 @@ public class ReturnPopUpHandler extends BaseScreenHandler {
 	@FXML
 	private Button confirmBtn;
 	
+	@FXML
+	private TextField returnDock;
+	
 	public HomeController getBController() {
 		return (HomeController) super.getBController();
 	}
@@ -55,16 +59,24 @@ public class ReturnPopUpHandler extends BaseScreenHandler {
 			dockChoice.getItems().add(dock.getName());
 		}
 		
-		dockChoice.setValue(Dock.getDockById(rent.getBike().getDockId()).getName());
+		dockChoice.setAccessibleText("Choose dock");
 		setInfo();
 		
 		confirmBtn.setOnMouseClicked(e -> {
 			try {
-				System.out.println(rent.getBike().getDockId());
-				getBController().returnBike(rent, dockChoice.getSelectionModel().getSelectedItem());
-				System.out.println(dockChoice.getSelectionModel().getSelectedItem());
-				System.out.println(rent.getBike().getDockId());
+				
+//				getBController().returnBike(rent, dockChoice.getSelectionModel().getSelectedItem());
+				System.out.println(returnDock.getText());
+				Dock dock = Dock.getDockByName(returnDock.getText());
+				System.out.println(dock.getId());
+				getBController().setNewDock(rent, dock.getId());
+				getBController().returnBike(rent, dock.getId());
+				
+				getBController().createInvoice(rent);
 				homeScreenHandler.loadAllDocks();
+				homeScreenHandler.getRentBikeBtn().setDisable(false);
+				homeScreenHandler.getReturnBikeBtn().setDisable(true);
+				homeScreenHandler.getViewBikeBtn().setDisable(true);
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -74,11 +86,6 @@ public class ReturnPopUpHandler extends BaseScreenHandler {
 		});
 	}
 
-	public void requestToPopUpReturnBike(BaseScreenHandler prevScreen) {
-		setPreviousScreen(prevScreen);
-		setScreenTitle("Return bike?");
-		show();
-	}
 	
 	public void setInfo() {
 		Bike bike = this.rent.getBike();

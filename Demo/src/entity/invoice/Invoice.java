@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+import entity.bike.Bike;
 import entity.db.ECOBIKEDB;
 import entity.rent.Rent;
 import utils.Utils;
@@ -17,9 +18,17 @@ public class Invoice {
 	private int id;
 	private Rent rent;
 	private int totalAmount;
+	private int totalTime;
+	private int bikeId;
+	private int startDockId;
+	private int endDockId;
 	
 	public int getId() {
 		return id;
+	}
+	
+	public Invoice() {
+		
 	}
 	
 	public Invoice (int id, Rent rent, int amount) {
@@ -59,12 +68,35 @@ public class Invoice {
 		return this;
 	}
 	
-//	public Invoice createNewInvoiceFromDB (ResultSet res) throws SQLException {
-//		return new Invoice()
-//				.setId(res.getInt("id"))
-//				.setRent(new Rent().getRentById(res.getInt("rentId")))
-//				.setTotalAmount(res.getInt("totalamount"));
-//	}
+	public Invoice setBikeId(int id) {
+		this.bikeId = id;
+		return this;
+	}
+	
+	public Invoice setStartDockId(int id) {
+		this.startDockId = id;
+		return this;
+	}
+	
+	public Invoice setEndDockId(int id) {
+		this.endDockId = id;
+		return this;
+	}
+	
+	public Invoice setTotalTime(int totalTime) {
+		this.totalTime = totalTime;
+		return this;
+	}
+	
+	public Invoice createNewInvoiceFromDB (ResultSet res) throws SQLException {
+		return new Invoice()
+				.setId(res.getInt("id"))
+				.setStartDockId(res.getInt("startDockId"))
+				.setEndDockId(res.getInt("endDockId"))
+				.setBikeId(res.getInt("bikeId"))
+				.setTotalTime(res.getInt("totalTime"))
+				.setTotalAmount(res.getInt("totalAmount"));
+	}
 //	
 //	public Invoice getInvoiceById (int id) throws SQLException {
 //		Statement stm = ECOBIKEDB.getConnection().createStatement();
@@ -90,11 +122,11 @@ public class Invoice {
 //		return invoiceList;
 //	}
 //	
-	public void addInvoice (Rent rent, int totalAmount) throws SQLException{
+	public static void addInvoice (Rent rent) throws SQLException{
 		Statement stm = ECOBIKEDB.getConnection().createStatement();
-		String query = "INSERT INTO  INVOICE(RENTID, TOTALAMOUNT) VALUE (" 
-						 + rent.getId() + "," + totalAmount + ";";
-		stm.executeQuery(query);
+		String query = "INSERT INTO  INVOICE(bikeId, totalAmount, totalTime) VALUE (" 
+						 + rent.getBike().getId() + "," + rent.getCurrentFee() +  "," + rent.getRentTime() + ");";
+		stm.execute(query);
 		//return new Invoice(id, rent, totalAmount);
 	}
 	

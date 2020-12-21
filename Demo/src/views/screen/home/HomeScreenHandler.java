@@ -67,8 +67,8 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 	@FXML
 	private Button searchBtn;
 	
-//	@FXML
-//	private Button historyBtn;
+	@FXML
+	private Button historyBtn;
 	
 	private Rent rent;
 	
@@ -89,7 +89,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 		this.rent = rent;
 	}
 	
-	private List homeItems;
+	public List homeItems;
 
 	public HomeScreenHandler(Stage stage, String screenPath) throws IOException {
 		super(stage, screenPath);
@@ -111,6 +111,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setBController(new HomeController());
 		
+		
 		loadAllDocks();
 		
 		viewBikeBtn.setOnMouseClicked(e -> {
@@ -121,7 +122,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 				
 				rentBikeScreen = new RentBikeScreenHandler(this.stage, Configs.VIEW_RENTING_BIKE_PATH, rent);
 				rentBikeScreen.setHomeScreenHandler(this);
-				rentBikeScreen.requestToRentBike(this);
+				rentBikeScreen.requestToNewScreen(this, "Rent Information Screen");
 			} catch(IOException e1) {
 				e1.printStackTrace();
 			}
@@ -143,7 +144,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 			try {
 				returnPopUp = new ReturnPopUpHandler(new Stage(), Configs.RETURN_POPUP_PATH, rent);
 				returnPopUp.setHomeScreenHandler(this);
-				returnPopUp.requestToPopUpReturnBike(this);
+				returnPopUp.requestToNewScreen(this, "Check again?");
 			} catch (SQLException | IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -152,7 +153,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 		});
 		
 		rentBikeBtn.setOnMouseClicked(e -> {
-
+			
 			BikeInfoHandler bikeInfoScreen;
 			try {
 				Bike bike = getBController().getBikeByBarcode(barcode.getText());
@@ -163,7 +164,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 					
 					bikeInfoScreen = new BikeInfoHandler(this.stage, Configs.BIKE_INFO_PATH, bike, this);
 					bikeInfoScreen.setHomeScreenHandler(this);
-					bikeInfoScreen.requestToViewBikeInfo(this);
+					bikeInfoScreen.requestToNewScreen(this, "Bike Detail Screen");
 				}
 				
 			} catch (SQLException | IOException e1) {
@@ -178,7 +179,6 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 			
 			try {
 				List dockList = getBController().searchDock(search.getText());
-				System.out.println(search.getText());
 				this.homeItems = new ArrayList<>();
 				int count = 0;
 				for (Object object : dockList) {
@@ -193,19 +193,17 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 			addDockHome(this.homeItems);
 		});
 		
-//		historyBtn.setOnMouseClicked(e -> {
-//			HistoryScreenHandler historyScreen;
-//			
-//			try {
-//				historyScreen = new HistoryScreenHandler(this.stage, Configs.HISTORY_PATH);
-//				historyScreen.setHomeScreenHandler(this);
-//				historyScreen.requestToViewHistory(this);
-//			} catch (IOException e1) {
-//				e1.printStackTrace();
-//			}
-//		});
-		
-		addDockHome(this.homeItems);
+		historyBtn.setOnMouseClicked(e -> {
+			HistoryScreenHandler historyScreen;
+			
+			try {
+				historyScreen = new HistoryScreenHandler(this.stage, Configs.HISTORY_PATH);
+				historyScreen.setHomeScreenHandler(this);
+				historyScreen.requestToNewScreen(this, "History Screen");
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		});
 	}
 	
 	public void setImage() {
@@ -225,9 +223,13 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 	
 	public void loadAllDocks() {
 		try {
+			if (this.homeItems != null) {
+				this.homeItems.clear();
+				flowPaneDock.getChildren().clear();
+			}
 			List dockList = getBController().getAllDocks();
 			this.homeItems = new ArrayList<>();
-			int count = 0;
+			
 			for (Object object : dockList) {
 				Dock dock = (Dock) object;
 				DockHandler d1 = new DockHandler(this.stage, Configs.DOCK_HOME_PATH, dock, this);
@@ -238,6 +240,8 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 			LOGGER.info("Errors occured: " + e.getMessage());
 			e.printStackTrace();
 		}
+		
+		addDockHome(this.homeItems);
 	}
 
 }

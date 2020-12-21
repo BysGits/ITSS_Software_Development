@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import controller.HomeController;
 import controller.RentBikeController;
 import entity.bike.Bike;
+import entity.dock.Dock;
 import entity.rent.Rent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -41,6 +42,7 @@ public class CardScreenHandler extends BaseScreenHandler {
 	public HomeController getBController() {
 		return (HomeController) super.getBController();
 	}
+	
 	
 	public CardScreenHandler(Stage stage, String screenPath, Bike bike, HomeScreenHandler home) throws IOException {
 		super(stage, screenPath);
@@ -97,14 +99,27 @@ public class CardScreenHandler extends BaseScreenHandler {
 			Rent rent;
 			try {
 				rent = getBController().newRent(bike);
-				System.out.println(System.currentTimeMillis());
+				getBController().setNewDock(rent, 99);
+				getBController().rentBike(rent);
 				// Enable the ViewBike button and ReturnBike button in home page
+				
+				/**
+				 * - Create a new Rent instance
+				 * - Close Card screen
+				 * - Remove bike in dock
+				 * - Reload the dock list
+				 * 
+				 */
 				home.getRenting(rent);
+				
+		
+				this.stage.close();
 				home.show();
 				home.loadAllDocks();
 				home.getReturnBikeBtn().setDisable(false);
 				home.getViewBikeBtn().setDisable(false);
 				home.getRentBikeBtn().setDisable(true);
+				
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -112,16 +127,5 @@ public class CardScreenHandler extends BaseScreenHandler {
 			
 		});
 	}
-	
-	public void requestToCardScreen(BaseScreenHandler prevScreen) {
-		setPreviousScreen(prevScreen);
-		setScreenTitle("Card Screen");
-		show();
-	}
-	
-	
-	
-	//public void requestToCardScreen()
-
 	
 }

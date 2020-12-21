@@ -5,6 +5,7 @@ import java.util.List;
 
 import entity.bike.Bike;
 import entity.dock.Dock;
+import entity.invoice.Invoice;
 import entity.rent.Rent;
 
 public class HomeController extends BaseController {
@@ -63,13 +64,28 @@ public class HomeController extends BaseController {
 		return new Rent(bike);
 	}
 	
-	public void returnBike(Rent rent, String name) throws SQLException {
-		Dock dock = Dock.getDockByName(name);
-		System.out.println("ChECK");
-		rent.getBike().setNewDock(dock.getId());
-	}
+//	public void returnBike(Rent rent, String name) throws SQLException {
+//		Dock dock = Dock.getDockByName(name);
+//		System.out.println("ChECK");
+//		rent.getBike().setNewDock(dock.getId());
+//	}
 	
 	public void createInvoice(Rent rent) throws SQLException {
-		
+		Invoice.addInvoice(rent);
 	}
+	
+	public void setNewDock(Rent rent, int dockId) throws SQLException {
+		rent.getBike().setNewDock(dockId);
+	}
+	
+	public void rentBike(Rent rent) throws SQLException {
+		Dock.getDockById(rent.getBike().getDockId()).rentBike();
+	}
+	
+	public void returnBike(Rent rent, int id) throws SQLException {
+		Dock.getDockById(rent.getBike().getDockId()).returnBike(id);
+	}
+
+
+	
 }

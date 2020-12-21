@@ -2,138 +2,216 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Polyline?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+<AnchorPane fx:id="fee" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane prefHeight="150.0" prefWidth="1366.0">
+      <Polyline fill="#ffdb59" layoutX="207.0" layoutY="125.0" points="-50.0, -40.0, 50.0, -40.0, 2.0, 79.0, -50.0, -40.0" stroke="#ffdb59" strokeType="INSIDE" strokeWidth="0.0">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Polyline>
+      <Pane layoutX="24.0" layoutY="43.0" prefHeight="144.0" prefWidth="297.0" style="-fx-background-color: #ffdb59;">
          <children>
-            <ImageView fx:id="logo" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+            <Text fill="WHITE" layoutX="14.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total fee:" underline="true" wrappingWidth="172.16015625">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+            <Label layoutX="51.0" layoutY="54.0" prefHeight="58.0" prefWidth="198.0" text="25000" textFill="WHITE">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Label>
+            <Text fill="#658624" layoutX="199.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="V N Đ" wrappingWidth="63.13671875">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <ImageView fitHeight="552.0" fitWidth="24.0" layoutX="195.0" layoutY="197.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../assets/images/50987_orig.png" />
+         </image></ImageView>
+      <Pane layoutX="251.0" layoutY="518.0" prefHeight="45.0" prefWidth="159.0" style="-fx-background-color: #ffdb59;" AnchorPane.topAnchor="518.0">
+         <children>
+            <Text fill="#505c51" layoutX="26.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start dock:">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane layoutX="251.0" layoutY="598.0" prefHeight="45.0" prefWidth="159.0" style="-fx-background-color: #ffdb59;" AnchorPane.topAnchor="598.0">
+         <children>
+            <Text fill="#505c51" layoutX="30.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End dock:">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane layoutX="251.0" layoutY="678.0" prefHeight="45.0" prefWidth="159.0" style="-fx-background-color: #ffdb59;" AnchorPane.topAnchor="678.0">
+         <children>
+            <Text fill="#505c51" layoutX="28.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rent time:">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <ImageView fitHeight="768.0" fitWidth="382.0" layoutX="982.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../../../assets/images/sharon-mccutcheon-8lnbXtxFGZw-unsplash1.jpg" />
+         </image>
+         <effect>
+            <ColorAdjust brightness="-0.53" />
+         </effect>
+      </ImageView>
+      <Pane layoutX="251.0" layoutY="254.0" prefHeight="45.0" prefWidth="159.0" style="-fx-background-color: #ffdb59;">
+         <children>
+            <Text fill="#505c51" layoutX="36.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Barcode:">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane layoutX="251.0" layoutY="333.0" prefHeight="45.0" prefWidth="159.0" style="-fx-background-color: #ffdb59;">
+         <children>
+            <Text fill="#505c51" layoutX="55.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane layoutX="251.0" layoutY="414.0" prefHeight="45.0" prefWidth="159.0" style="-fx-background-color: #ffdb59;">
+         <children>
+            <Text fill="#505c51" layoutX="43.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Features">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Text layoutX="251.0" layoutY="501.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RENT INFORMATION">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="251.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BIKE INFORMATION">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <Pane layoutX="410.0" layoutY="518.0" prefHeight="45.0" prefWidth="574.0" style="-fx-background-color: #f2f2f2;">
+         <children>
+            <Label fx:id="startDock" layoutX="14.0" layoutY="12.0" text="Label" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="410.0" layoutY="598.0" prefHeight="45.0" prefWidth="574.0" style="-fx-background-color: #f2f2f2;">
+         <children>
+            <Label fx:id="endDock" layoutX="14.0" layoutY="10.0" text="Label" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="410.0" layoutY="678.0" prefHeight="45.0" prefWidth="574.0" style="-fx-background-color: #f2f2f2;">
+         <children>
+            <Label fx:id="time" layoutX="14.0" layoutY="12.0" text="Label" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="410.0" layoutY="254.0" prefHeight="45.0" prefWidth="574.0" style="-fx-background-color: #f2f2f2;">
+         <children>
+            <Label fx:id="barcode" layoutX="16.0" layoutY="12.0" text="Label" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="410.0" layoutY="333.0" prefHeight="45.0" prefWidth="574.0" style="-fx-background-color: #f2f2f2;">
+         <children>
+            <Label fx:id="type" layoutX="14.0" layoutY="12.0" text="Label" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="410.0" layoutY="414.0" prefHeight="45.0" prefWidth="574.0" style="-fx-background-color: #f2f2f2;">
+         <children>
+            <Label fx:id="feature" layoutX="14.0" layoutY="12.0" text="Label" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Text fill="WHITE" layoutX="1069.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Invoice">
+         <font>
+            <Font size="73.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="logo" fitHeight="150.0" fitWidth="200.0" layoutX="1108.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../assets/images/logo.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="backBtn" layoutX="1020.0" layoutY="637.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="99.0" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="56.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../assets/images/logo.png" />
+                  <Image url="@../../../assets/images/back%20(1).png" />
+               </image>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="returnBtn" layoutX="1248.0" layoutY="641.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="99.0" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="56.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../assets/images/forward.png" />
+               </image>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="1152.0" layoutY="641.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="57.0" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fx:id="homeBtn" fitHeight="33.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../../../assets/images/home.png" />
                </image>
             </ImageView>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutY="150.0" prefHeight="500.0" prefWidth="1366.0">
-         <children>
-            <GridPane layoutX="145.0" layoutY="45.0" prefHeight="125.0" prefWidth="840.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="415.0" minWidth="10.0" prefWidth="165.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="684.0" minWidth="10.0" prefWidth="675.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Label text="Barcode">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="10.0" layoutY="63.0" text="Type" GridPane.rowIndex="1">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="10.0" layoutY="97.0" text="Features" GridPane.rowIndex="2">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="barcode" layoutX="10.0" layoutY="18.0" text="Barcode" GridPane.columnIndex="1">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="type" layoutX="175.0" layoutY="18.0" text="Barcode" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="feature" layoutX="175.0" layoutY="60.0" text="Barcode" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </GridPane>
-            <Label layoutX="75.0" layoutY="3.0" text="BIKE INFORMATION">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="75.0" layoutY="183.0" text="RENT INFORMATION">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <GridPane layoutX="143.0" layoutY="224.0" prefHeight="223.0" prefWidth="852.0">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="421.0" minWidth="10.0" prefWidth="165.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="706.0" minWidth="10.0" prefWidth="687.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-               <children>
-                  <Label text="Start dock">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="10.0" layoutY="63.0" text="End dock" GridPane.rowIndex="1">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="10.0" layoutY="97.0" text="Rented time" GridPane.rowIndex="2">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="10.0" layoutY="161.0" text="Total Fee" GridPane.rowIndex="3">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="startDock" text="Barcode" GridPane.columnIndex="1">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="endDock" layoutX="175.0" layoutY="25.0" text="Barcode" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="time" layoutX="175.0" layoutY="81.0" text="Barcode" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="fee" layoutX="175.0" layoutY="137.0" text="Barcode" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </GridPane>
-         </children>
-      </AnchorPane>
-      <Button fx:id="returnBtn" layoutX="419.0" layoutY="681.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Return" />
-      <Button fx:id="backBtn" layoutX="747.0" layoutY="681.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Back" />
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

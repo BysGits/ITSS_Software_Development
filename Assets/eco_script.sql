@@ -117,7 +117,7 @@ CREATE TABLE `dock` (
   `availableBikes` int NOT NULL,
   `emptySlots` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -126,7 +126,7 @@ CREATE TABLE `dock` (
 
 LOCK TABLES `dock` WRITE;
 /*!40000 ALTER TABLE `dock` DISABLE KEYS */;
-INSERT INTO `dock` VALUES (1,'D01','69 Vu Trong Phung',5,5),(2,'D02','420 Khuong Dinh',5,5),(3,'D03','135 Ngoc Ha',5,5),(4,'D04','41 Dong Tac',5,5),(5,'D05','204 Nguyen Trai',5,5),(6,'D06','1 Dai Co Viet',5,5),(7,'D07','100 Giai Phong',5,5),(8,'D08','30 Kim Ma',5,5),(9,'D09','96 Nguyen Khanh Toan',5,5),(10,'D10','6 Nguyen Du',5,5),(11,'D11','1 Quoc Tu Giam',5,5),(12,'D12','2 Hai Ba Trung',5,5),(13,'D13','241 Xuan Thuy',5,5),(14,'D14','6 Quang Trung',5,5),(15,'D15','200 Tran Dai Nghia',5,5),(16,'D16','5 Trang Tien',5,5),(17,'D17','18 Kham Thien',5,5),(18,'D18','520 De La Thanh',5,5),(19,'D19','73 Au Co',5,5),(20,'D20','89 Hoang Hoa Tham',5,5);
+INSERT INTO `dock` VALUES (1,'D01','69 Vu Trong Phung',5,5),(2,'D02','420 Khuong Dinh',5,5),(3,'D03','135 Ngoc Ha',5,5),(4,'D04','41 Dong Tac',5,5),(5,'D05','204 Nguyen Trai',5,5),(6,'D06','1 Dai Co Viet',5,5),(7,'D07','100 Giai Phong',5,5),(8,'D08','30 Kim Ma',5,5),(9,'D09','96 Nguyen Khanh Toan',5,5),(10,'D10','6 Nguyen Du',5,5),(11,'D11','1 Quoc Tu Giam',5,5),(12,'D12','2 Hai Ba Trung',5,5),(13,'D13','241 Xuan Thuy',5,5),(14,'D14','6 Quang Trung',5,5),(15,'D15','200 Tran Dai Nghia',5,5),(16,'D16','5 Trang Tien',5,5),(17,'D17','18 Kham Thien',5,5),(18,'D18','520 De La Thanh',5,5),(19,'D19','73 Au Co',5,5),(20,'D20','89 Hoang Hoa Tham',5,5),(99,'D99','N/A',0,0);
 /*!40000 ALTER TABLE `dock` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -139,11 +139,14 @@ DROP TABLE IF EXISTS `invoice`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `invoice` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `rentId` int NOT NULL,
+  `bikeId` int NOT NULL,
   `totalAmount` int NOT NULL,
+  `startDockid` int DEFAULT NULL,
+  `endDockId` int DEFAULT NULL,
+  `totalTime` int DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `rent_idx` (`rentId`),
-  CONSTRAINT `rent` FOREIGN KEY (`rentId`) REFERENCES `rent` (`id`)
+  KEY `bike1_idx` (`bikeId`),
+  CONSTRAINT `bike1` FOREIGN KEY (`bikeId`) REFERENCES `bike` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -200,9 +203,7 @@ CREATE TABLE `rent` (
   `rentTime` int NOT NULL,
   `currentFee` int NOT NULL,
   `type` tinyint NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `bike_idx` (`bikeId`),
-  CONSTRAINT `bike` FOREIGN KEY (`bikeId`) REFERENCES `bike` (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -224,4 +225,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-19 12:59:18
+-- Dump completed on 2020-12-21 19:31:50

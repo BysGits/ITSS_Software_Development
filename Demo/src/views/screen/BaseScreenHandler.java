@@ -73,7 +73,12 @@ public class BaseScreenHandler extends FXMLScreenHandler {
 	}
 	
 	public Stage getStage() {
-		// TODO Auto-generated method stub
 		return this.stage;
+	}
+	
+	public void requestToNewScreen(BaseScreenHandler prevScreen, String title) {
+		setPreviousScreen(prevScreen);
+		setScreenTitle(title);
+		show();		
 	}
 }

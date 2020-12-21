@@ -49,6 +49,10 @@ public class DockHandler extends BaseScreenHandler {
 //		return home.getStage();
 //	}
 	
+	public Button getChooseBtn() {
+		return this.chooseBtn;
+	}
+	
 	public DockHandler(Stage stage, String screenPath, Dock dock, HomeScreenHandler home) throws IOException, SQLException{
 		super(stage, screenPath);
 		this.dock = dock;
@@ -78,7 +82,6 @@ public class DockHandler extends BaseScreenHandler {
 	
 	
 	private void setDockInfo() throws SQLException {
-		System.out.println(dock.getId());
 		dockName.setText(dock.getName());
 		dockAddress.setText(dock.getAddress());
 		dockAvailableBikes.setText(Integer.toString(dock.getAvailableBikes()));

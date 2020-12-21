@@ -48,7 +48,7 @@ public class BikeHandler extends BaseScreenHandler {
 				bikeInfoScreen = new BikeInfoHandler(home.getStage(), Configs.BIKE_INFO_PATH, bike, homeScreenHandler);
 				bikeInfoScreen.setDockScreenHandler(home);
 				bikeInfoScreen.setHomeScreenHandler(homeScreenHandler);
-				bikeInfoScreen.requestToViewBikeInfo(home);
+				bikeInfoScreen.requestToNewScreen(home, "Bike Detail Screen");
 			} catch (SQLException | IOException e1) {
 				e1.printStackTrace();
 			}

@@ -42,9 +42,7 @@ public class BikeInfoHandler extends BaseScreenHandler {
 	
 	@FXML
 	private Label depositFee;
-	
-	@FXML
-	private ImageView logo;
+
 	
 	@FXML
 	private Button rentBtn;
@@ -64,19 +62,15 @@ public class BikeInfoHandler extends BaseScreenHandler {
 		
 		setBController(new HomeController());
 		
-		logo.setOnMouseClicked(e -> {
-//			this.getPreviousScreen().show();
-			homeScreenHandler.show();
-		});
-		
 		rentBtn.setOnMouseClicked(e -> {
 			
 			CardScreenHandler cardScreen;
 			try {
 				LOGGER.info("User clicked rent button and navigated to the card screen.");
-				cardScreen = new CardScreenHandler(this.getPreviousScreen().getStage(), Configs.CARD_PATH, bike, home);
+				Stage newStage = new Stage();
+				cardScreen = new CardScreenHandler(newStage, Configs.CARD_PATH, bike, home);
 				cardScreen.setHomeScreenHandler(home);
-				cardScreen.requestToCardScreen(this);
+				cardScreen.requestToNewScreen(this, "Card Screen");
 				
 			} catch (IOException e1) {
 				e1.printStackTrace();
@@ -84,18 +78,6 @@ public class BikeInfoHandler extends BaseScreenHandler {
 		});
 		setBikeInfo();
 	}
-	
-	public void requestToViewBikeInfo(BaseScreenHandler prevScreen) {
-		setPreviousScreen(prevScreen);
-		System.out.println(prevScreen);
-		setScreenTitle("Bike Information");
-		show();
-	}
-
-//	public void setHomeScreenHandler(DockScreenHandler home) {
-//		// TODO Auto-generated method stub
-//		
-//	}
 	
 	public void setBikeInfo() throws SQLException {
 		barcode.setText(this.bike.getBarcode());
