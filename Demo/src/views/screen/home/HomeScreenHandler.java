@@ -67,8 +67,8 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 	@FXML
 	private Button searchBtn;
 	
-	@FXML
-	private Button historyBtn;
+//	@FXML
+//	private Button historyBtn;
 	
 	private Rent rent;
 	
@@ -193,17 +193,17 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 			addDockHome(this.homeItems);
 		});
 		
-		historyBtn.setOnMouseClicked(e -> {
-			HistoryScreenHandler historyScreen;
-			
-			try {
-				historyScreen = new HistoryScreenHandler(this.stage, Configs.HISTORY_PATH);
-				historyScreen.setHomeScreenHandler(this);
-				historyScreen.requestToViewHistory(this);
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
-		});
+//		historyBtn.setOnMouseClicked(e -> {
+//			HistoryScreenHandler historyScreen;
+//			
+//			try {
+//				historyScreen = new HistoryScreenHandler(this.stage, Configs.HISTORY_PATH);
+//				historyScreen.setHomeScreenHandler(this);
+//				historyScreen.requestToViewHistory(this);
+//			} catch (IOException e1) {
+//				e1.printStackTrace();
+//			}
+//		});
 		
 		addDockHome(this.homeItems);
 	}
