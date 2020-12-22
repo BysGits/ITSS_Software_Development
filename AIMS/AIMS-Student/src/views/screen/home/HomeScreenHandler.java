@@ -23,6 +23,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitMenuButton;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -62,10 +63,22 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 
     @FXML
     private SplitMenuButton splitMenuBtnSearch;
+    
+    @FXML
+    private TextField searchBar;
 
     private List homeItems;
+    
 
-    public HomeScreenHandler(Stage stage, String screenPath) throws IOException{
+    public List getHomeItems() {
+		return homeItems;
+	}
+
+	public void setHomeItems(List homeItems) {
+		this.homeItems = homeItems;
+	}
+
+	public HomeScreenHandler(Stage stage, String screenPath) throws IOException{
         super(stage, screenPath);
     }
 
@@ -80,12 +93,14 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
     @Override
     public void show() {
         numMediaInCart.setText(String.valueOf(Cart.getCart().getListMedia().size()) + " media");
+        addMediaHome(homeItems);
         super.show();
     }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         setBController(new HomeController());
+        numMediaInCart.setText(String.valueOf(Cart.getCart().getListMedia().size()) + " media");
         try{
             List medium = getBController().getAllMedia();
             this.homeItems = new ArrayList<>();
@@ -120,6 +135,10 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
         addMenuItem(0, "Book", splitMenuBtnSearch);
         addMenuItem(1, "DVD", splitMenuBtnSearch);
         addMenuItem(2, "CD", splitMenuBtnSearch);
+        
+        splitMenuBtnSearch.setOnMouseClicked(e -> {
+        	searchItem(searchBar.getText());
+        });
     }
 
     public void setImage(){
@@ -145,6 +164,11 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
                 VBox vBox = (VBox) node;
                 while(vBox.getChildren().size()<3 && !mediaItems.isEmpty()){
                     MediaHandler media = (MediaHandler) mediaItems.get(0);
+                    try {
+						media.getMediaAvail().setText(String.valueOf(media.getMedia().getQuantity()));
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
                     vBox.getChildren().add(media.getContent());
                     mediaItems.remove(media);
                 }
@@ -180,6 +204,24 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
             addMediaHome(filteredItems);
         });
         menuButton.getItems().add(position, menuItem);
+    }
+    
+    private void searchItem(String text) {
+    	hboxMedia.getChildren().forEach(node -> {
+            VBox vBox = (VBox) node;
+            vBox.getChildren().clear();
+    	});
+    	
+    	List filteredItems = new ArrayList<>();
+        homeItems.forEach(me -> {
+            MediaHandler media = (MediaHandler) me;
+            if (media.getMedia().getTitle().toLowerCase().startsWith(text.toLowerCase())){
+                filteredItems.add(media);
+            }
+        });
+        
+        addMediaHome(filteredItems);
+    	
     }
 
     

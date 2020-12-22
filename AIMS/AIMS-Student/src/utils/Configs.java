@@ -40,12 +40,14 @@ public class Configs {
 	// static resource
 	public static final String IMAGE_PATH = "assets/images";
 	public static final String INVOICE_SCREEN_PATH = "/views/fxml/invoice.fxml";
+	public static final String INVOICE_RUSH_SCREEN_PATH = "/views/fxml/invoice_rush.fxml";
 	public static final String INVOICE_MEDIA_SCREEN_PATH = "/views/fxml/media_invoice.fxml";
 	public static final String PAYMENT_SCREEN_PATH = "/views/fxml/payment.fxml";
 	public static final String RESULT_SCREEN_PATH = "/views/fxml/result.fxml";
 	public static final String SPLASH_SCREEN_PATH = "/views/fxml/splash.fxml";
 	public static final String CART_SCREEN_PATH = "/views/fxml/cart.fxml";
 	public static final String SHIPPING_SCREEN_PATH = "/views/fxml/shipping.fxml";
+	public static final String SHIPPING_RUSH_SCREEN_PATH = "/views/fxml/shipping_rush.fxml";
 	public static final String CART_MEDIA_PATH = "/views/fxml/media_cart.fxml";
 	public static final String HOME_PATH  = "/views/fxml/home.fxml";
 	public static final String HOME_MEDIA_PATH = "/views/fxml/media_home.fxml";

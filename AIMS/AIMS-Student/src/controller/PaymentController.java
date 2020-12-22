@@ -91,11 +91,15 @@ public class PaymentController extends BaseController {
 
 			this.interbank = new InterbankSubsystem();
 			PaymentTransaction transaction = interbank.payOrder(card, amount, contents);
-
+			
+			result.put("TRANSACTION_ID", transaction.getTransactionId());
+			result.put("AMOUNT", String.valueOf(transaction.getAmount()));
+			result.put("TRANSACTION_CONTENT", transaction.getTransactionContent());
 			result.put("RESULT", "PAYMENT SUCCESSFUL!");
 			result.put("MESSAGE", "You have succesffully paid the order!");
 		} catch (PaymentException | UnrecognizedException ex) {
 			result.put("MESSAGE", ex.getMessage());
+			
 		}
 		return result;
 	}

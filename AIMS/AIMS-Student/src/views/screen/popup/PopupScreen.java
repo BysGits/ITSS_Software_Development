@@ -42,7 +42,7 @@ public class PopupScreen extends BaseScreenHandler{
     }
 
     public static void error(String message) throws IOException{
-        popup(message, Configs.IMAGE_PATH + "/" + "tickerror.png", false).show(false);
+        popup(message, Configs.IMAGE_PATH + "/" + "tickerror.png", true).show(true);
     }
 
     public static PopupScreen loading(String message) throws IOException{

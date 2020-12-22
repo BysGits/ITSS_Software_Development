@@ -10,9 +10,11 @@ import java.util.logging.Logger;
 import common.exception.MediaNotAvailableException;
 import common.exception.PlaceOrderException;
 import controller.PlaceOrderController;
+import controller.PlaceRushOrderController;
 import controller.ViewCartController;
 import entity.cart.CartMedia;
 import entity.order.Order;
+import entity.order.RushOrder;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -24,6 +26,7 @@ import utils.Configs;
 import utils.Utils;
 import views.screen.BaseScreenHandler;
 import views.screen.popup.PopupScreen;
+import views.screen.shipping.ShippingRushScreenHandler;
 import views.screen.shipping.ShippingScreenHandler;
 
 public class CartScreenHandler extends BaseScreenHandler {
@@ -53,6 +56,9 @@ public class CartScreenHandler extends BaseScreenHandler {
 
 	@FXML
 	private Button btnPlaceOrder;
+	
+	@FXML
+	private Button btnPlaceRushOrder;
 
 	public CartScreenHandler(Stage stage, String screenPath) throws IOException {
 		super(stage, screenPath);
@@ -79,6 +85,19 @@ public class CartScreenHandler extends BaseScreenHandler {
 			}
 			
 		});
+		
+		btnPlaceRushOrder.setOnMouseClicked(e -> {
+			LOGGER.info("Place Rush Order button clicked");
+			try {
+				requestToPlaceRushOrder();
+			} catch (SQLException | IOException exp) {
+				LOGGER.severe("Cannot place the order, see the logs");
+				exp.printStackTrace();
+				throw new PlaceOrderException(Arrays.toString(exp.getStackTrace()).replaceAll(", ", "\n"));
+			}
+			
+		});
+		
 	}
 
 	public Label getLabelAmount() {
@@ -125,6 +144,41 @@ public class CartScreenHandler extends BaseScreenHandler {
 			ShippingScreenHandler.setScreenTitle("Shipping Screen");
 			ShippingScreenHandler.setBController(placeOrderController);
 			ShippingScreenHandler.show();
+
+		} catch (MediaNotAvailableException e) {
+			// if some media are not available then display cart and break usecase Place Order
+			displayCartWithMediaAvailability();
+		}
+	}
+	
+	
+	public void requestToPlaceRushOrder() throws SQLException, IOException {
+		try {
+			// create placeOrderController and process the order
+			PlaceRushOrderController placeRushOrderController = new PlaceRushOrderController();
+			if (placeRushOrderController.getListCartMedia().size() == 0){
+				PopupScreen.error("You don't have anything to place");
+				return;
+			}
+
+			placeRushOrderController.placeRushOrder();
+			
+			// display available media
+			displayCartWithMediaAvailability();
+			
+			
+
+			// create order
+			RushOrder rushOrder = placeRushOrderController.createRushOrder();
+			
+
+			// display shipping form
+			ShippingRushScreenHandler ShippingRushScreenHandler = new ShippingRushScreenHandler(this.stage, Configs.SHIPPING_RUSH_SCREEN_PATH, rushOrder);
+			ShippingRushScreenHandler.setPreviousScreen(this);
+			ShippingRushScreenHandler.setHomeScreenHandler(homeScreenHandler);
+			ShippingRushScreenHandler.setScreenTitle("Shipping Screen");
+			ShippingRushScreenHandler.setBController(placeRushOrderController);
+			ShippingRushScreenHandler.show();
 
 		} catch (MediaNotAvailableException e) {
 			// if some media are not available then display cart and break usecase Place Order

@@ -72,7 +72,7 @@ public class MediaHandler extends FXMLScreenHandler {
 
 	private void setMediaInfo() {
 		title.setText(cartMedia.getMedia().getTitle());
-		price.setText(Utils.getCurrencyFormat(cartMedia.getPrice()));
+		price.setText(Utils.getCurrencyFormat(cartMedia.getQuantity()*cartMedia.getPrice()));
 		File file = new File(cartMedia.getMedia().getImageURL());
 		Image im = new Image(file.toURI().toString());
 		image.setImage(im);
@@ -102,6 +102,7 @@ public class MediaHandler extends FXMLScreenHandler {
 		spinner = new Spinner<Integer>(valueFactory);
 		spinner.setOnMouseClicked( e -> {
 			try {
+				labelOutOfStock.setText("");
 				int numOfProd = this.spinner.getValue();
 				int remainQuantity = cartMedia.getMedia().getQuantity();
 				LOGGER.info("NumOfProd: " + numOfProd + " -- remainOfProd: " + remainQuantity);

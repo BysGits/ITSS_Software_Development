@@ -1,10 +1,12 @@
 package views.screen.payment;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import controller.PaymentController;
 import entity.cart.Cart;
+import entity.cart.CartMedia;
 import common.exception.PlaceOrderException;
 import entity.invoice.Invoice;
 import javafx.application.Platform;
@@ -40,6 +42,11 @@ public class PaymentScreenHandler extends BaseScreenHandler {
 		btnConfirmPayment.setOnMouseClicked(e -> {
 			try {
 				confirmToPayOrder();
+				List lstMedia = getBController().getListCartMedia();
+				for (Object cm : lstMedia) {
+					CartMedia cartMedia = (CartMedia) cm;
+					cartMedia.getMedia().updateMediaFieldById("Media", cartMedia.getMedia().getId(), "Quantity", cartMedia.getMedia().getQuantity() - cartMedia.getQuantity());
+				}
 				((PaymentController) getBController()).emptyCart();
 			} catch (Exception exp) {
 				System.out.println(exp.getStackTrace());

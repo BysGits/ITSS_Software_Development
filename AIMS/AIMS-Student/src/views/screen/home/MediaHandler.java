@@ -35,7 +35,7 @@ public class MediaHandler extends FXMLScreenHandler{
     @FXML
     protected Label mediaAvail;
 
-    @FXML
+	@FXML
     protected Spinner<Integer> spinnerChangeNumber;
 
     @FXML
@@ -56,7 +56,7 @@ public class MediaHandler extends FXMLScreenHandler{
                 // if media already in cart then we will increase the quantity by 1 instead of create the new cartMedia
                 CartMedia mediaInCart = home.getBController().checkMediaInCart(media);
                 if (mediaInCart != null) {
-                    mediaInCart.setQuantity(mediaInCart.getQuantity() + 1);
+                    mediaInCart.setQuantity(mediaInCart.getQuantity() + spinnerChangeNumber.getValue());
                 }else{
                     CartMedia cartMedia = new CartMedia(media, cart, spinnerChangeNumber.getValue(), media.getPrice());
                     cart.getListMedia().add(cartMedia);
@@ -64,9 +64,10 @@ public class MediaHandler extends FXMLScreenHandler{
                 }
 
                 // subtract the quantity and redisplay
-                media.setQuantity(media.getQuantity() - spinnerChangeNumber.getValue());
+                int quantity = media.getQuantity() - spinnerChangeNumber.getValue();
+                media.setQuantity(quantity);
                 mediaAvail.setText(String.valueOf(media.getQuantity()));
-                home.getNumMediaCartLabel().setText(String.valueOf(cart.getTotalMedia() + " media"));
+                home.getNumMediaCartLabel().setText(String.valueOf(cart.getListMedia().size() + " media"));
                 PopupScreen.success("The media " + media.getTitle() + " added to Cart");
             } catch (MediaNotAvailableException exp) {
                 try {
@@ -88,6 +89,15 @@ public class MediaHandler extends FXMLScreenHandler{
     public Media getMedia(){
         return media;
     }
+    
+
+    public Label getMediaAvail() {
+		return mediaAvail;
+	}
+
+	public void setMediaAvail(Label mediaAvail) {
+		this.mediaAvail = mediaAvail;
+	}
 
     private void setMediaInfo() throws SQLException {
         // set the cover image of media

@@ -40,7 +40,7 @@ public class OrderMedia {
     }
 
     public int getPrice() {
-        return this.price;
+        return getQuantity()*this.price;
     }
 
     public void setPrice(int price) {

@@ -22,4 +22,40 @@ public class PaymentTransaction {
 	public String getErrorCode() {
 		return errorCode;
 	}
+
+	public String getTransactionId() {
+		return transactionId;
+	}
+
+	public void setTransactionId(String transactionId) {
+		this.transactionId = transactionId;
+	}
+
+	public String getTransactionContent() {
+		return transactionContent;
+	}
+
+	public void setTransactionContent(String transactionContent) {
+		this.transactionContent = transactionContent;
+	}
+
+	public int getAmount() {
+		return amount;
+	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+
+	public String getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(String createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public void setErrorCode(String errorCode) {
+		this.errorCode = errorCode;
+	}
 }

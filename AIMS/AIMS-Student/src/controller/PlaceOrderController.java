@@ -68,10 +68,10 @@ public class PlaceOrderController extends BaseController{
      * @throws InterruptedException
      * @throws IOException
      */
-    public void processDeliveryInfo(HashMap info) throws InterruptedException, IOException{
+    public int processDeliveryInfo(HashMap info) throws InterruptedException, IOException{
         LOGGER.info("Process Delivery Info");
         LOGGER.info(info.toString());
-        validateDeliveryInfo(info);
+        return validateDeliveryInfo(info);
     }
     
     /**
@@ -80,8 +80,11 @@ public class PlaceOrderController extends BaseController{
    * @throws InterruptedException
    * @throws IOException
    */
-    public void validateDeliveryInfo(HashMap<String, String> info) throws InterruptedException, IOException{
-    	
+    public int validateDeliveryInfo(HashMap<String, String> info) throws InterruptedException, IOException{
+    	if(!validateName(info.get("name"))) return 1;
+    	else if(!validatePhoneNumber(info.get("phone"))) return 2;
+    	else if(!validateAddress(info.get("address"))) return 3;
+    	else return 0;
     }
     
     public boolean validatePhoneNumber(String phoneNumber) {
@@ -108,7 +111,13 @@ public class PlaceOrderController extends BaseController{
     }
     
     public boolean validateAddress(String address) {
-    	return address.matches("[\\p{Punct}&&[#,.()-]]+\\d*+\\s?+[\\p{Alpha}+\\s?]*" );
+    	if(address.equals("")) return false;
+		for(int i=0 ; i<address.length(); i++) {
+			if(!Character.isLetter(address.charAt(i)))
+				return false;
+		}
+		return true;
+    	
     }
     
 
@@ -118,6 +127,7 @@ public class PlaceOrderController extends BaseController{
      * @return shippingFee
      */
     public int calculateShippingFee(Order order){
+    	if(order.getAmount() > 100000) return 0;
         Random rand = new Random();
         int fees = (int)( ( (rand.nextFloat()*10)/100 ) * order.getAmount() );
         LOGGER.info("Order Amount: " + order.getAmount() + " -- Shipping Fees: " + fees);
