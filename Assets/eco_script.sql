@@ -16,6 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `account`
+--
+
+DROP TABLE IF EXISTS `account`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `account` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `password` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `account`
+--
+
+LOCK TABLES `account` WRITE;
+/*!40000 ALTER TABLE `account` DISABLE KEYS */;
+INSERT INTO `account` VALUES (1,'admin','120914'),(2,'group2','1');
+/*!40000 ALTER TABLE `account` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `bike`
 --
 
@@ -25,7 +50,7 @@ DROP TABLE IF EXISTS `bike`;
 CREATE TABLE `bike` (
   `id` int NOT NULL AUTO_INCREMENT,
   `typeId` int NOT NULL,
-  `barcode` varchar(45) NOT NULL,
+  `barcode` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `battery` int NOT NULL,
   `state` tinyint NOT NULL,
   `dockId` int NOT NULL,
@@ -34,7 +59,7 @@ CREATE TABLE `bike` (
   KEY `dock_idx` (`dockId`),
   CONSTRAINT `biketype` FOREIGN KEY (`typeId`) REFERENCES `biketype` (`id`),
   CONSTRAINT `dock` FOREIGN KEY (`dockId`) REFERENCES `dock` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -61,9 +86,9 @@ CREATE TABLE `biketype` (
   `rearSeats` int NOT NULL,
   `rentingFee` int NOT NULL,
   `depositFee` int NOT NULL,
-  `type` varchar(45) NOT NULL,
+  `type` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -85,12 +110,12 @@ DROP TABLE IF EXISTS `card`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `card` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `cardCode` varchar(45) NOT NULL,
-  `owner` varchar(45) NOT NULL,
+  `cardCode` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `owner` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `cvvCode` int NOT NULL,
-  `dateExpired` varchar(4) NOT NULL,
+  `dateExpired` varchar(4) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -112,12 +137,12 @@ DROP TABLE IF EXISTS `dock`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `dock` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
-  `address` varchar(45) NOT NULL,
+  `name` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `address` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `availableBikes` int NOT NULL,
   `emptySlots` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -126,7 +151,7 @@ CREATE TABLE `dock` (
 
 LOCK TABLES `dock` WRITE;
 /*!40000 ALTER TABLE `dock` DISABLE KEYS */;
-INSERT INTO `dock` VALUES (1,'D01','69 Vu Trong Phung',5,5),(2,'D02','420 Khuong Dinh',5,5),(3,'D03','135 Ngoc Ha',5,5),(4,'D04','41 Dong Tac',5,5),(5,'D05','204 Nguyen Trai',5,5),(6,'D06','1 Dai Co Viet',5,5),(7,'D07','100 Giai Phong',5,5),(8,'D08','30 Kim Ma',5,5),(9,'D09','96 Nguyen Khanh Toan',5,5),(10,'D10','6 Nguyen Du',5,5),(11,'D11','1 Quoc Tu Giam',5,5),(12,'D12','2 Hai Ba Trung',5,5),(13,'D13','241 Xuan Thuy',5,5),(14,'D14','6 Quang Trung',5,5),(15,'D15','200 Tran Dai Nghia',5,5),(16,'D16','5 Trang Tien',5,5),(17,'D17','18 Kham Thien',5,5),(18,'D18','520 De La Thanh',5,5),(19,'D19','73 Au Co',5,5),(20,'D20','89 Hoang Hoa Tham',5,5),(99,'D99','N/A',0,0);
+INSERT INTO `dock` VALUES (1,'Center Post office','51 Vu Trong Phung, Thanh Xuan',5,5),(2,'Pubgame Center','272 Khuong Dinh, Thanh Xuan',5,5),(3,'B52 Victory Museum','157 Doi Can, Ba Dinh',5,5),(4,'Lac Viet Audio','41 Dong Tac, Dong Da',5,5),(5,'Thuong Dinh Soccer Field','129 Nguyen Trai, Thanh Xuan',5,5),(6,'Hanoi University of Science & Technology','1 Dai Co Viet, Hai Ba Trung',5,5),(7,'Dai Thang Garage','243 Giai Phong, Dong Da',5,5),(8,'Kim Ma Bus station','241 Kim Ma, Hoan Kiem',5,5),(9,'Cau Giay People\'s Committee','36 Cau Giay, Cau Giay',5,5),(10,'Circus Central','69 Tran Nhan Tong, Hai Ba Trung',5,5),(11,'Temple of Literature','58 Quoc Tu Giam, Dong Da',5,5),(12,'Hanoi Department of Finance','38 Hai Ba Trung, Hoan Kiem',5,5),(13,'Hanoi Post office','75 Dinh Tien Hoang, Hoan Kiem',5,5),(14,'Ha Dong Post office','4 Quang Trung, Ha Dong',5,5),(15,'NEU Culture House','100 Tran Dai Nghia, Hai Ba Trung',5,5),(16,'Hanoi Opera House','1 Trang Tien, Hoan Kiem',5,5),(17,'Hanoi locomotive factory','2 Kham Thien, Dong Da',5,5),(18,'Giang Vo Church','766 De La Thanh, Ba Dinh',5,5),(19,'Tay Ho Viettel Post office','317 Au Co, Tay Ho',5,5),(20,'Hanoi Beer Factory','183 Hoang Hoa Tham, Ba Dinh',5,5),(99,'D99','N/A',0,0);
 /*!40000 ALTER TABLE `dock` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -147,7 +172,7 @@ CREATE TABLE `invoice` (
   PRIMARY KEY (`id`),
   KEY `bike1_idx` (`bikeId`),
   CONSTRAINT `bike1` FOREIGN KEY (`bikeId`) REFERENCES `bike` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -225,4 +250,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-21 19:31:50
+-- Dump completed on 2020-12-24  0:37:06
