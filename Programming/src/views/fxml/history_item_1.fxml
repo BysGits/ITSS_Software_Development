@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="200.0" prefWidth="768.0" style="-fx-background-radius: 1em; -fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+   <children>
+      <Pane layoutX="54.0" layoutY="27.0" prefHeight="45.0" prefWidth="159.0" style="-fx-background-color: #ffdb59;">
+         <children>
+            <Text fill="#505c51" layoutX="18.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rental Code">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane layoutX="213.0" layoutY="27.0" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #f2f2f2;">
+         <children>
+            <Label fx:id="rentalCode" layoutX="16.0" layoutY="12.0" text="Label" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="54.0" layoutY="100.0" prefHeight="45.0" prefWidth="159.0" style="-fx-background-color: #ffdb59;">
+         <children>
+            <Text fill="#505c51" layoutX="26.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Time">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane layoutX="213.0" layoutY="100.0" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #f2f2f2;">
+         <children>
+            <Label fx:id="time" layoutX="16.0" layoutY="12.0" text="Label" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="54.0" layoutY="172.0" prefHeight="45.0" prefWidth="159.0" style="-fx-background-color: #ffdb59;">
+         <children>
+            <Text fill="#505c51" layoutX="27.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Dock">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane layoutX="213.0" layoutY="172.0" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #f2f2f2;">
+         <children>
+            <Label fx:id="start" layoutX="16.0" layoutY="12.0" text="Label" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="444.0" layoutY="27.0" prefHeight="45.0" prefWidth="159.0" style="-fx-background-color: #ffdb59;">
+         <children>
+            <Text fill="#505c51" layoutX="37.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Barcode">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane layoutX="603.0" layoutY="27.0" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #f2f2f2;">
+         <children>
+            <Label fx:id="barcode" layoutX="16.0" layoutY="12.0" text="Label" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="444.0" layoutY="100.0" prefHeight="45.0" prefWidth="159.0" style="-fx-background-color: #ffdb59;">
+         <children>
+            <Text fill="#505c51" layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Amount">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane layoutX="603.0" layoutY="100.0" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #f2f2f2;">
+         <children>
+            <Label fx:id="fee" layoutX="16.0" layoutY="12.0" text="Label" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="444.0" layoutY="172.0" prefHeight="45.0" prefWidth="159.0" style="-fx-background-color: #ffdb59;">
+         <children>
+            <Text fill="#505c51" layoutX="36.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End Dock">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane layoutX="603.0" layoutY="172.0" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #f2f2f2;">
+         <children>
+            <Label fx:id="end" layoutX="16.0" layoutY="12.0" text="Label" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+   <effect>
+      <DropShadow />
+   </effect>
+</AnchorPane>

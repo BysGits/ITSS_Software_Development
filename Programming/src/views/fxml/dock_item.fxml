@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<AnchorPane prefHeight="328.0" prefWidth="408.0" style="-fx-background-color: white; -fx-background-radius: 2em;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane accessibleRole="TEXT" prefHeight="148.0" prefWidth="501.0" style="-fx-background-color: #3b474f; -fx-background-radius: 2em;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <TextFlow fx:id="nameTextFlow" layoutX="-1.0" layoutY="29.0" prefHeight="45.0" prefWidth="408.0" textAlignment="CENTER">
+               <children>
+                  <Text fx:id="dockName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+            </TextFlow>
+            <TextFlow fx:id="addressTextFlow" layoutY="103.0" prefHeight="45.0" prefWidth="408.0" textAlignment="CENTER">
+               <children>
+                  <Text fx:id="dockAddress" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+            </TextFlow>
+         </children>
+      </Pane>
+      <Pane layoutX="48.0" layoutY="163.0" prefHeight="97.0" prefWidth="134.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="68.0" AnchorPane.leftAnchor="48.0" AnchorPane.topAnchor="163.0">
+         <children>
+            <Text fill="#9a8383" layoutX="4.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A V A I L B L E   B I K E S" />
+            <Label fx:id="dockAvailableBikes" alignment="CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="31.0" text="Label" textAlignment="CENTER" textFill="#6eda72">
+               <font>
+                  <Font size="47.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="241.0" layoutY="172.0" prefHeight="97.0" prefWidth="126.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="68.0" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="163.0">
+         <children>
+            <Text fill="#9a8383" layoutX="8.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E M P T Y   S L O T S" />
+            <Label fx:id="dockEmptySlots" alignment="CENTER" contentDisplay="CENTER" layoutX="6.0" layoutY="31.0" text="Label" textAlignment="CENTER" textFill="#ffb366">
+               <font>
+                  <Font size="47.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Button fx:id="chooseBtn" layoutX="163.0" layoutY="288.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="83.0" style="-fx-background-color: #e38568; -fx-background-radius: 2em;" text="C h o o s e" textFill="WHITE" />
+      <Separator layoutX="204.0" layoutY="163.0" orientation="VERTICAL" prefHeight="97.0" prefWidth="5.0" />
+      <Separator layoutX="48.0" layoutY="274.0" prefHeight="5.0" prefWidth="312.0" />
+      <Button fx:id="deleteBtn" layoutX="277.0" layoutY="288.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="83.0" style="-fx-background-color: #e38568; -fx-background-radius: 2em;" text="Delete" textFill="WHITE" visible="false" />
+   </children>
+   <effect>
+      <DropShadow />
+   </effect>
+</AnchorPane>

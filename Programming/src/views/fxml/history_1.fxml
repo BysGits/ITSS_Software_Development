@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ScrollPane layoutX="451.0" layoutY="35.0" prefHeight="698.0" prefWidth="900.0" style="-fx-background-color: #f5f5f5;" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="451.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="35.0">
+         <effect>
+            <InnerShadow />
+         </effect>
+         <content>
+            <FlowPane fx:id="vboxInvoice" prefHeight="684.0" prefWidth="883.0" vgap="40.0">
+               <padding>
+                  <Insets bottom="20.0" left="25.0" right="20.0" top="20.0" />
+               </padding></FlowPane>
+         </content>
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+      </ScrollPane>
+      <AnchorPane layoutY="-1.0" prefHeight="768.0" prefWidth="431.0" style="-fx-background-color: #c46343;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text fill="WHITE" layoutX="320.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="R E N T">
+               <font>
+                  <Font size="28.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Text>
+            <Text fill="WHITE" layoutX="254.0" layoutY="433.0" strokeType="OUTSIDE" strokeWidth="0.0" text="H I S T O R Y">
+               <font>
+                  <Font size="28.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Text>
+            <ImageView fx:id="logo" fitHeight="108.0" fitWidth="109.0" layoutX="318.0" layoutY="280.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../assets/images/logo.png" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="3.0" layoutY="383.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="316.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Rectangle>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="3.0" layoutY="422.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="253.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Rectangle>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="3.0" layoutX="410.0" layoutY="386.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="20.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Rectangle>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="3.0" layoutX="410.0" layoutY="424.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="20.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Rectangle>
+            <Button fx:id="homeBtn" layoutX="180.0" layoutY="669.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="57.0" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="56.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../assets/images/home.png" />
+                     </image>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
+   </children>
+</AnchorPane>

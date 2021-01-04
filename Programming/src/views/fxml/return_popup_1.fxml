@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="750.0" layoutX="226.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../../../assets/images/phillip-goldsberry-mluXedlmWek-unsplash.jpg" />
+         </image>
+         <effect>
+            <ColorAdjust />
+         </effect></ImageView>
+      <AnchorPane layoutX="201.0" layoutY="1.0" prefHeight="400.0" prefWidth="547.0" style="-fx-background-color: white; -fx-background-radius: 1em;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <GridPane layoutX="45.0" layoutY="72.0" prefHeight="256.0" prefWidth="432.0" AnchorPane.topAnchor="72.0">
+               <children>
+                  <Label text="Barcode:" textFill="#42678a">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="10.0" layoutY="15.0" text="Type:" textFill="#42678a" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="10.0" layoutY="45.0" text="Renting time:" textFill="#42678a" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="10.0" layoutY="75.0" text="Current fee:" textFill="#42678a" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="barcode" layoutX="10.0" layoutY="15.0" text="Label" textFill="#42678a" GridPane.columnIndex="1">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="type" layoutX="110.0" layoutY="15.0" text="Label" textFill="#42678a" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="time" layoutX="110.0" layoutY="45.0" text="Label" textFill="#42678a" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="fee" layoutX="110.0" layoutY="75.0" text="Label" textFill="#42678a" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="250.0" minWidth="10.0" prefWidth="106.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="400.0" minWidth="10.0" prefWidth="326.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
+      <Pane layoutX="-10.0" prefHeight="400.0" prefWidth="236.0" style="-fx-background-color: #3b80a3; -fx-background-radius: 1em;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="CENTER" layoutX="31.0" layoutY="75.0" prefHeight="27.0" prefWidth="181.0" text="Return bike at dock:" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="confirmBtn" layoutX="118.0" layoutY="235.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="94.0" style="-fx-background-color: #ebdb34; -fx-background-radius: 2em;" text="C o n f i r m">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <TextField fx:id="returnDock" layoutX="32.0" layoutY="179.0" prefHeight="27.0" prefWidth="181.0" promptText="Dock name...." style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" visible="false">
+               <effect>
+                  <DropShadow />
+               </effect></TextField>
+            <ComboBox fx:id="dockBox" layoutX="47.0" layoutY="126.0" prefWidth="150.0" style="-fx-background-color: white;">
+               <effect>
+                  <InnerShadow />
+               </effect></ComboBox>
+            <Button fx:id="backBtn" layoutX="145.0" layoutY="291.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="67.0" style="-fx-background-color: #ebdb34; -fx-background-radius: 2em;" text="B a c k">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <ImageView fitHeight="70.0" fitWidth="61.0" layoutX="757.0" layoutY="325.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../assets/images/logo.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="768.0" fitWidth="1366.0" layoutX="50.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../../../assets/images/a-l-rgLl9qA6kUA-unsplash.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="117.0" layoutY="90.0" prefHeight="588.0" prefWidth="1133.0" style="-fx-background-color: white; -fx-background-radius: 2em;">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <Pane layoutX="200.0" layoutY="41.0" prefHeight="491.0" prefWidth="828.0" style="-fx-background-color: #858461; -fx-background-radius: 2em;">
+               <children>
+                  <GridPane layoutX="67.0" layoutY="58.0" prefHeight="376.0" prefWidth="694.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="415.0" minWidth="10.0" prefWidth="187.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="686.0" minWidth="10.0" prefWidth="507.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="Barcode:" textFill="#fff7a8">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label text="Type:" textFill="#fff7a8" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label text="Features:" textFill="#fff7a8" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label text="Battery remained:" textFill="#fff7a8" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label text="Using time:" textFill="#fff7a8" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label text="Current fee:" textFill="#fff7a8" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="barcode" layoutX="10.0" layoutY="22.0" text="Barcode" textFill="WHITE" GridPane.columnIndex="1">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="type" layoutX="190.0" layoutY="22.0" text="Barcode" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="feature" layoutX="190.0" layoutY="22.0" text="Barcode" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="battery" layoutX="190.0" layoutY="120.0" text="Barcode" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="time" layoutX="190.0" layoutY="169.0" text="Barcode" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="fee" layoutX="190.0" layoutY="218.0" text="Barcode" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
+               </children>
+               <effect>
+                  <InnerShadow />
+               </effect>
+            </Pane>
+            <AnchorPane layoutY="-2.0" prefHeight="588.0" prefWidth="230.0" style="-fx-background-color: #709091; -fx-background-radius: 2em;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="588.0" layoutX="27.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="3.0" />
+                  <Pane layoutY="41.0" prefHeight="75.0" prefWidth="230.0" style="-fx-background-color: white;">
+                     <children>
+                        <Text fill="#36616b" layoutX="11.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="R E N T">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#36616b" layoutX="11.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I N F O R M A T I O N">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <effect>
+                        <DropShadow />
+                     </effect></Pane>
+                  <ImageView fx:id="ecoImage" fitHeight="54.0" fitWidth="77.0" layoutX="88.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../assets/images/home.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </children>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="75.0" fitWidth="114.0" layoutX="646.0" layoutY="685.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../assets/images/logo.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
